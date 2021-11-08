@@ -6,9 +6,17 @@ import Colors from '../constants/Colors';
 import MyHeader from '../components/MyHeader';
 StatusBar.setBackgroundColor(Colors.bg);
 export default function Drink({route, navigation}) {
+  const viewRef = React.useRef(null);
+  // useEffect(() => {
+  //   const unsubscribe = navigation.addListener('focus', () => {
+  //     viewRef.current.animate({0: {opacity: 0}, 1: {opacity: 1}});
+  //   });
+  //   return () => unsubscribe;
+  // }, [navigation]);
   return (
     <View style={styles.container}>
       <Text style={{color: '#000'}}>Drink Page</Text>
+      {/* <Animatable.View ref={viewRef} easing={'ease-in-out'}></Animatable.View> */}
       <View style={styles.page0}>
         <Text>Summary</Text>
         <Text>Today</Text>

@@ -4,35 +4,11 @@ import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import MyHeader from '../components/MyHeader';
+import Drink from './Drink';
+import Chart from './Chart';
 export default function ColorScreen({route, navigation}) {
   const viewRef = React.useRef(null);
-  const [bgColor, setBgColor] = useState('#fff');
-  // useEffect(() => {
-  //   switch (route.name) {
-  //     case 'Drink': {
-  //       setBgColor('Drink');
-  //       break;
-  //     }
-  //     case 'Chart': {
-  //       setBgColor('Chart');
-  //       break;
-  //     }
-  //     case 'Add': {
-  //       setBgColor(Colors.red);
-  //       break;
-  //     }
-  //     case 'Account': {
-  //       setBgColor(Colors.purple);
-  //       break;
-  //     }
-  //     case 'Like': {
-  //       setBgColor(Colors.yellow);
-  //       break;
-  //     }
-  //     default:
-  //       setBgColor(Colors.white);
-  //   }
-  // }, []);
+  const [bgColor, setBgColor] = useState();
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       viewRef.current.animate({0: {opacity: 0}, 1: {opacity: 1}});
@@ -41,21 +17,25 @@ export default function ColorScreen({route, navigation}) {
   }, [navigation]);
   return (
     <View style={Styles.container}>
-      <MyHeader
+      {/* <MyHeader
         menu
         onPressMenu={() => navigation.goBack()}
         title={route.name}
         right="more-vertical"
         onRightPress={() => console.log('right')}
-      />
+      /> */}
       <Animatable.View
         ref={viewRef}
-        easing={'ease-in-out'}
-        style={Styles.container}>
-        <View style={{backgroundColor: bgColor, flex: 1}} />
+        easing={'ease-in-quad'}
+        style={Styles.container}
+      >
+        <View style={{backgroundColor: 'yellow', flex: 0.1}} />
       </Animatable.View>
+      <View>
+        <Text>Hi</Text>
+        <Text>Hi</Text>
+        <Text>Hi</Text>
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({});
