@@ -69,8 +69,7 @@ const TabButton = props => {
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={1}
-      style={styles.container}
-    >
+      style={styles.container}>
       <Animatable.View ref={viewRef} duration={1000} style={styles.container}>
         <Icon
           type={item.type}
@@ -97,8 +96,7 @@ export default function AnimTab1() {
           borderTopEndRadius: 60,
           backgroundColor: Colors.darkBlue,
         },
-      }}
-    >
+      }}>
       {TabArr.map((item, index) => {
         return (
           <Tab.Screen

@@ -1,19 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  Image,
-  ImageBackground,
-} from 'react-native';
+import {StyleSheet, Text, View, StatusBar, Image} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
-import MyHeader from '../components/MyHeader';
 import drinkWave from '../../assets/images/drinkWave.png';
 
-StatusBar.setBackgroundColor(Colors.bg);
+// StatusBar.setBackgroundColor(Colors.bg);
 
 export default function Drink({route, navigation}) {
   let today = new Date();
@@ -21,13 +13,16 @@ export default function Drink({route, navigation}) {
   const [minute, setMinute] = useState(today.getMinutes());
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor={Colors.bg} barStyle="dark-content" />
       {/* <Animatable.View ref={viewRef} easing={'ease-in-out'}></Animatable.View> */}
       <View style={styles.page0}>
         <Text style={Styles.boldText}>Drink</Text>
         <Text style={Styles.Text}>Today</Text>
       </View>
       <View style={styles.page1}>
-        <Text style={{...Styles.Text}}>{/* {hours} :{minutes} */}</Text>
+        <Text style={{...Styles.Text}}>
+          {hour} :{minute}
+        </Text>
       </View>
       <View style={styles.page2}>
         <Image
@@ -36,7 +31,19 @@ export default function Drink({route, navigation}) {
           style={styles.drinkWave}></Image>
       </View>
       <View style={styles.page3}>
-        <Text>Drink gage</Text>
+        <View style={styles.drinkInfo}>
+          <View style={styles.drinkInfo0}>
+            <View style={styles.drinkInfo1}>
+              <Text stlye={styles.drinkInfo1Text}>Target</Text>
+            </View>
+            <View style={styles.drinkInfo2}>
+              <Text stlye={styles.drinkInfo2Text}>Drink</Text>
+            </View>
+          </View>
+          <View style={styles.drinkInfo3}>
+            <Text style={styles.drinkInfo3Text}>Left</Text>
+          </View>
+        </View>
       </View>
       <View style={styles.page4}></View>
     </View>
@@ -47,6 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.bg,
+    fontFamily: 'Lato-Bold',
   },
   page0: {
     flex: 0.4,
@@ -80,5 +88,48 @@ const styles = StyleSheet.create({
   page4: {
     backgroundColor: Colors.bg,
     height: 80,
+  },
+  drinkInfo: {
+    width: '100%',
+    height: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  drinkInfo0: {
+    width: '45%',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  drinkInfo1: {
+    height: '45%',
+    borderRadius: 20,
+    marginBottom: '10%',
+    backgroundColor: Colors.white,
+    position: 'relative',
+  },
+  drinkInfo2: {
+    height: '45%',
+    borderRadius: 20,
+    backgroundColor: Colors.white,
+  },
+  drinkInfo3: {
+    backgroundColor: Colors.black,
+    width: '45%',
+    height: '95%',
+    borderRadius: 20,
+  },
+  drinkInfo1Text: {
+    color: Colors.black,
+    fontSize: 30,
+  },
+  drinkInfo2Text: {
+    color: 'black',
+    fontSize: 30,
+  },
+  drinkInfo3Text: {
+    color: Colors.white,
+    fontFamily: 'Lato-Regular',
+    fontSize: 25,
   },
 });

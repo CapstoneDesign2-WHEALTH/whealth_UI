@@ -27,8 +27,7 @@ export default function ColorScreen({route, navigation}) {
       <Animatable.View
         ref={viewRef}
         easing={'ease-in-quad'}
-        style={Styles.container}
-      >
+        style={Styles.container}>
         <View style={{backgroundColor: 'yellow', flex: 0.1}} />
       </Animatable.View>
       <View>
