@@ -12,11 +12,18 @@ const Styles = StyleSheet.create({
   separator: {
     height: 0.3,
     width: '100%',
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.bg,
     opacity: 0.8,
   },
+  Text: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 15,
+    color: Colors.black,
+  },
   boldText: {
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Bold',
+    fontSize: 25,
+    color: Colors.black,
   },
   contentContainerStyle: {
     paddingBottom: 200,
