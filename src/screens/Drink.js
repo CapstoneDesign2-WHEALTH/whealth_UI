@@ -4,7 +4,7 @@ import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import drinkWave from '../../assets/images/drinkWave.png';
-
+import Donut from '../components/Donut';
 // StatusBar.setBackgroundColor(Colors.bg);
 
 export default function Drink({route, navigation}) {
@@ -65,6 +65,16 @@ export default function Drink({route, navigation}) {
           <View style={styles.drinkInfo3}>
             <Text style={styles.drinkInfo3Text}>Left</Text>
             <Text style={{...styles.drinkInfo3Text, top: '20%'}}>1000mL</Text>
+            <View stlye={styles.donut}>
+              <Donut
+                radius={80}
+                percentage={70}
+                color={Colors.bg}
+                delay={500}
+                max={100}
+                style={{top: 100}}
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -141,6 +151,9 @@ const styles = StyleSheet.create({
     width: '45%',
     height: '95%',
     borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 40,
   },
   drinkInfo1Text: {
     color: Colors.black,
@@ -180,5 +193,8 @@ const styles = StyleSheet.create({
     left: 0,
     paddingHorizontal: 20,
     paddingVertical: 20,
+  },
+  donut: {
+    position: 'absolute',
   },
 });

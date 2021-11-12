@@ -13,6 +13,30 @@ import Colors from '../constants/Colors';
 import drinkWave from '../../assets/images/drinkWave.png';
 import Svg, {Path, Polyline} from 'react-native-svg';
 
+import Donut from '../components/Donut';
+const data = [
+  {
+    percentage: 8,
+    color: 'tomato',
+    max: 10,
+  },
+  {
+    percentage: 14,
+    color: 'skyblue',
+    max: 20,
+  },
+  {
+    percentage: 92,
+    color: 'gold',
+    max: 100,
+  },
+  {
+    percentage: 240,
+    color: '#222',
+    max: 500,
+  },
+];
+
 export default function Chart({route, navigation}) {
   let today = new Date();
   const [hour, setHour] = useState(today.getHours());
