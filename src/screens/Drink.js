@@ -34,14 +34,37 @@ export default function Drink({route, navigation}) {
         <View style={styles.drinkInfo}>
           <View style={styles.drinkInfo0}>
             <View style={styles.drinkInfo1}>
-              <Text stlye={styles.drinkInfo1Text}>Target</Text>
+              <Text style={styles.drinkInfo1Text}>Target</Text>
+              <View style={styles.bar}></View>
+              <View
+                style={{
+                  ...styles.bar,
+                  backgroundColor: '#F3D9FF',
+                  left: 40,
+                  zIndex: -1,
+                }}></View>
+              <Text style={styles.drinkInfo2Text}> 3000 mL</Text>
             </View>
             <View style={styles.drinkInfo2}>
-              <Text stlye={styles.drinkInfo2Text}>Drink</Text>
+              <Text style={styles.drinkInfo1Text}>Drink</Text>
+              <View
+                style={{
+                  ...styles.bar,
+                  backgroundColor: Colors.darkBlue,
+                }}></View>
+              <View
+                style={{
+                  ...styles.bar,
+                  backgroundColor: Colors.lightBlue,
+                  left: 40,
+                  zIndex: -1,
+                }}></View>
+              <Text style={styles.drinkInfo2Text}>2000 mL</Text>
             </View>
           </View>
           <View style={styles.drinkInfo3}>
             <Text style={styles.drinkInfo3Text}>Left</Text>
+            <Text style={{...styles.drinkInfo3Text, top: '20%'}}>1000mL</Text>
           </View>
         </View>
       </View>
@@ -121,15 +144,41 @@ const styles = StyleSheet.create({
   },
   drinkInfo1Text: {
     color: Colors.black,
-    fontSize: 30,
+    fontFamily: 'Lato-Bold',
+    fontSize: 20,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
+  bar: {
+    position: 'absolute',
+    backgroundColor: '#B933F9',
+    top: 60,
+    left: 30,
+    width: 10,
+    height: 20,
+    borderRadius: 4,
+    transform: [{rotate: '90deg'}],
   },
   drinkInfo2Text: {
-    color: 'black',
-    fontSize: 30,
+    color: Colors.black,
+    fontFamily: 'Lato-Bold',
+    fontSize: 25,
+    position: 'absolute',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    bottom: 0,
   },
   drinkInfo3Text: {
     color: Colors.white,
-    fontFamily: 'Lato-Regular',
+    fontFamily: 'Lato-Bold',
     fontSize: 25,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
 });

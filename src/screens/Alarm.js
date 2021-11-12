@@ -1,75 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import Styles from '../common/Styles';
-import Colors from '../constants/Colors';
-import drinkWave from '../../assets/images/drinkWave.png';
+import React, {useEffect, useState, useRef} from 'react';
+import {Svg, Line, Path} from 'react-native-svg';
+import {Animated, View} from 'react-native';
+import {AnimatedSVGPath} from 'react-native-svg-animations';
 
-export default function Alarm({route, navigation}) {
-  let today = new Date();
-  const [hour, setHour] = useState(today.getHours());
-  const [minute, setMinute] = useState(today.getMinutes());
+export default () => {
   return (
-    <View style={styles.container}>
-      {/* <Animatable.View ref={viewRef} easing={'ease-in-out'}></Animatable.View> */}
-      <View style={styles.page0}>
-        <Text style={Styles.boldText}>Alarm</Text>
-        <Text style={Styles.Text}>Today</Text>
-      </View>
-      <View style={styles.page1}>
-        <Text style={{...Styles.Text}}>
-          {hour} :{minute}
-        </Text>
-      </View>
-      <View style={styles.page2}>
-        <Image
-          source={drinkWave}
-          resizeMode="cover"
-          style={styles.drinkWave}></Image>
-      </View>
-      <View style={styles.page3}></View>
-      <View style={styles.page4}></View>
+    <View>
+      {/* <AnimatedSVGPath
+        strokeColor={'green'}
+        duration={500}
+        strokeWidth={10}
+        strokeDashArray={[42.76482137044271, 42.76482137044271]}
+        height={400}
+        width={400}
+        scale={0.75}
+        delay={100}
+        d={}
+        loop={false}
+      /> */}
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.bg,
-    fontFamily: 'Lato-Bold',
-  },
-  page0: {
-    flex: 0.4,
-    flexDirection: 'row',
-    backgroundColor: Colors.bg,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 30,
-  },
-  page1: {
-    flex: 0.3,
-    backgroundColor: Colors.bg,
-    alignItems: 'center',
-  },
-  page2: {
-    position: 'relative',
-    flex: 0.8,
-    backgroundColor: Colors.bg,
-  },
-  drinkWave: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    width: '100%',
-    height: '100%',
-  },
-  page3: {
-    flex: 2,
-    backgroundColor: Colors.bg,
-  },
-  page4: {
-    backgroundColor: Colors.bg,
-    height: 80,
-  },
-});
+};
