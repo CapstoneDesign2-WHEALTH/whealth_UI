@@ -10,10 +10,9 @@ import {
 import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
-import drinkWave from '../../assets/images/drinkWave.png';
-import Svg, {Path, Polyline} from 'react-native-svg';
-
+import drinkWaveFlip from '../../assets/images/drinkWaveFlip.png';
 import Donut from '../components/Donut';
+
 const data = [
   {
     percentage: 8,
@@ -33,6 +32,11 @@ const data = [
   {
     percentage: 240,
     color: '#222',
+    max: 500,
+  },
+  {
+    percentage: 240,
+    color: '#23e',
     max: 500,
   },
 ];
@@ -55,14 +59,40 @@ export default function Chart({route, navigation}) {
       </View>
       <View style={styles.page2}>
         <Image
-          source={drinkWave}
+          source={drinkWaveFlip}
           resizeMode="cover"
           style={styles.drinkWave}></Image>
       </View>
       <View style={styles.page3}>
-        <Text style={Styles.boldText}>HI</Text>
+        <Text style={styles.waterText}>Water Score</Text>
+        <Text style={styles.waterScore}>75</Text>
       </View>
-      <View style={styles.page4}></View>
+      <View style={styles.page4}>
+        <View>
+          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+            <Text>M</Text>
+            <Text>T</Text>
+            <Text>W</Text>
+            <Text>T</Text>
+            <Text>F</Text>
+          </View>
+          <View style={styles.page4}>
+            {data.map((p, i) => {
+              return (
+                <Donut
+                  key={i}
+                  radius={35}
+                  percentage={p.percentage}
+                  color={p.color}
+                  delay={500 + 100 * i}
+                  max={p.max}
+                />
+              );
+            })}
+          </View>
+        </View>
+      </View>
+      <View style={styles.page5}></View>
     </View>
   );
 }
@@ -99,11 +129,30 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   page3: {
-    flex: 2,
+    flex: 1.4,
     backgroundColor: Colors.bg,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   page4: {
     backgroundColor: Colors.bg,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    marginBottom: 10,
+  },
+  page5: {
+    backgroundColor: Colors.bg,
     height: 80,
+  },
+  waterText: {
+    ...Styles.boldText,
+    fontSize: 20,
+  },
+  waterScore: {
+    ...Styles.boldText,
+    color: Colors.darkPurple,
+    fontSize: 150,
+    marginTop: 20,
   },
 });

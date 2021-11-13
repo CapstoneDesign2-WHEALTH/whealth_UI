@@ -5,10 +5,9 @@ import {
 } from '@react-navigation/stack';
 import React from 'react';
 import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
-import AnimTab1 from './bottomTab/AnimTab1';
 import Home from './screens/Home';
 import Colors from './constants/Colors';
-
+import Navtab from './bottomTab/Navtab';
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -45,9 +44,9 @@ const RootStack = () => {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{title: 'Whealth', headerShown: true}}
+        // options={{title: 'Whealth', headerShown: true}}
       />
-      <Stack.Screen name="Tab1" component={AnimTab1} />
+      <Stack.Screen name="Navtab" component={Navtab} />
     </Stack.Navigator>
   );
 };
