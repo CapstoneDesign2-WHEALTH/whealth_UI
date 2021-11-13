@@ -27,7 +27,6 @@ const data = [
 export default function Alarm() {
   return (
     <View style={styles.container}>
-      <StatusBar hidden />
       <View
         style={{
           flexDirection: 'row',
