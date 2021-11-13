@@ -68,13 +68,13 @@ export default function Chart({route, navigation}) {
         <Text style={styles.waterScore}>75</Text>
       </View>
       <View style={styles.page4}>
-        <View>
+        <View style={{marginTop: '15%'}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-            <Text>M</Text>
-            <Text>T</Text>
-            <Text>W</Text>
-            <Text>T</Text>
-            <Text>F</Text>
+            <Text style={styles.day}>Mon</Text>
+            <Text style={styles.day}>Tue</Text>
+            <Text style={styles.day}>Wed</Text>
+            <Text style={styles.day}>Thu</Text>
+            <Text style={styles.day}>Fri</Text>
           </View>
           <View style={styles.page4}>
             {data.map((p, i) => {
@@ -129,17 +129,18 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   page3: {
-    flex: 1.4,
+    flex: 1,
     backgroundColor: Colors.bg,
     alignItems: 'center',
     justifyContent: 'center',
   },
   page4: {
+    flex: 1,
     backgroundColor: Colors.bg,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    marginBottom: 10,
+    marginBottom: 3,
   },
   page5: {
     backgroundColor: Colors.bg,
@@ -154,5 +155,10 @@ const styles = StyleSheet.create({
     color: Colors.darkPurple,
     fontSize: 150,
     marginTop: 20,
+  },
+  day: {
+    ...Styles.boldText,
+    color: Colors.black,
+    fontSize: 15,
   },
 });

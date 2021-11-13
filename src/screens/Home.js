@@ -1,19 +1,14 @@
 import React from 'react';
 import {List} from 'react-native-paper';
-import {
-  StyleSheet,
-  View,
-  Text,
-  StatusBar,
-  Image,
-  ImageBackground,
-} from 'react-native';
+import {StyleSheet, View, Text, StatusBar, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import Styles from '../common/Styles';
 import Yoga from '../../assets/images/Yoga.png';
 import waterman from '../../assets/images/waterman.png';
 import loginBg from '../../assets/images/loginBg.png';
+import facebook from '../../assets/images/facebook.png';
+import google from '../../assets/images/google.png';
 const Home = ({navigation}) => {
   const navigate = route => navigation.navigate(route);
   return (
@@ -29,7 +24,7 @@ const Home = ({navigation}) => {
       <StatusBar backgroundColor={Colors.bg} barStyle="dark-content" />
       <View style={styles.page0}></View>
       <View style={styles.page1}>
-        <Text style={Styles.boldText}>First Step to </Text>
+        <Text style={Styles.boldText}>First Step to</Text>
         <Text style={Styles.boldText}>Whealthy Life</Text>
       </View>
       <View style={styles.page2}>
@@ -37,10 +32,12 @@ const Home = ({navigation}) => {
       </View>
       <View style={styles.page3}>
         <TouchableOpacity onPress={() => navigate('Navtab')} style={styles.btn}>
-          <Text>Connect With FACEBOOK</Text>
+          <Image source={facebook} />
+          <Text style={styles.text}>Connect With FACEBOOK</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigate('Navtab')} style={styles.btn}>
-          <Text>Connect With GOOGLE</Text>
+          <Image source={google} />
+          <Text style={styles.text}>Connect With GOOGLE</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -69,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   drinkWave: {
-    transform: [{scale: 0.55}],
+    // transform: [{scale: 0.8}],
   },
   page3: {
     flex: 2,
@@ -79,15 +76,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   btn: {
-    width: '100%',
+    width: '60%',
     paddingHorizontal: 10,
     paddingVertical: 10,
+    flexDirection: 'row',
     borderWidth: 2,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     borderRadius: 20,
     borderColor: Colors.darkPurple,
     marginBottom: 20,
+  },
+  text: {
+    ...Styles.Text,
+    color: Colors.black,
+    fontSize: 12,
   },
 });
 
