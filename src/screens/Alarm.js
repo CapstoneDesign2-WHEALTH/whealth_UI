@@ -26,8 +26,10 @@ export default function Alarm({route, navigation}) {
         <Text style={Styles.boldText}>Alarm</Text>
       </View>
       <View style={styles.page1}>
-        <Text style={Styles.boldText}>Upcoming Alarm</Text>
-        <Text style={{...Styles.boldText, fontSize: 30}}>19:45, Sat</Text>
+        <Text style={{...Styles.boldText, fontSize: 12}}>Upcoming Alarm</Text>
+        <Text style={{...Styles.boldText, fontSize: 25, marginTop: 10}}>
+          19:45, Sat
+        </Text>
       </View>
       <View style={styles.page2}>
         <Image
@@ -56,10 +58,10 @@ export default function Alarm({route, navigation}) {
             </View>
             <View style={styles.alarmBox2}>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} />
+                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
                 <Text style={styles.alarmText2}>Sat</Text>
               </View>
-              <Ionicons name="trash-outline" size={20} />
+              <Ionicons name="trash-outline" size={20} color={Colors.black} />
             </View>
           </View>
           {/* 개별 알람 */}
@@ -72,10 +74,44 @@ export default function Alarm({route, navigation}) {
             </View>
             <View style={styles.alarmBox2}>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} />
+                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
                 <Text style={styles.alarmText2}>Sat</Text>
               </View>
-              <Ionicons name="trash-outline" size={20} />
+              <Ionicons name="trash-outline" size={20} color={Colors.black} />
+            </View>
+          </View>
+
+          {/* 개별 알람 */}
+          <View style={styles.alarmBox}>
+            <View style={styles.alarmBox1}>
+              <Text style={styles.alarmText}>19:45pm</Text>
+              <Text style={{...styles.alarmText, fontSize: 15}}>
+                Take a Pill
+              </Text>
+            </View>
+            <View style={styles.alarmBox2}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
+                <Text style={styles.alarmText2}>Sat</Text>
+              </View>
+              <Ionicons name="trash-outline" size={20} color={Colors.black} />
+            </View>
+          </View>
+
+          {/* 개별 알람 */}
+          <View style={styles.alarmBox}>
+            <View style={styles.alarmBox1}>
+              <Text style={styles.alarmText}>19:45pm</Text>
+              <Text style={{...styles.alarmText, fontSize: 15}}>
+                Take a Pill
+              </Text>
+            </View>
+            <View style={styles.alarmBox2}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
+                <Text style={styles.alarmText2}>Sat</Text>
+              </View>
+              <Ionicons name="trash-outline" size={20} color={Colors.black} />
             </View>
           </View>
           {/* 개별 알람 */}
@@ -88,26 +124,10 @@ export default function Alarm({route, navigation}) {
             </View>
             <View style={styles.alarmBox2}>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} />
+                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
                 <Text style={styles.alarmText2}>Sat</Text>
               </View>
-              <Ionicons name="trash-outline" size={20} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} />
+              <Ionicons name="trash-outline" size={20} color={Colors.black} />
             </View>
           </View>
         </ScrollView>
