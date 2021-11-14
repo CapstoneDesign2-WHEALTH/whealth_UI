@@ -5,9 +5,7 @@ import {
   View,
   Image,
   ScrollView,
-  SafeAreaView,
   Dimensions,
-  StatusBar,
   // ActivityIndicator,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';

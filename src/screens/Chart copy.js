@@ -1,5 +1,12 @@
 import React, {useEffect, useState, Animated} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  Image,
+  ImageBackground,
+} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
@@ -40,13 +47,17 @@ export default function Chart({route, navigation}) {
   const [minute, setMinute] = useState(today.getMinutes());
   return (
     <View style={styles.container}>
+      {/* <Animatable.View ref={viewRef} easing={'ease-in-out'}></Animatable.View> */}
       <View style={styles.page0}>
         <Text style={Styles.boldText}>Chart</Text>
         <Text style={Styles.Text}>Today</Text>
       </View>
-      {/* <View style={styles.page1}></View> */}
+      <View style={styles.page1}>
+        <Text style={{...Styles.Text}}>
+          {hour} :{minute}
+        </Text>
+      </View>
       <View style={styles.page2}>
-        <Bar></Bar>
         <Image
           source={drinkWaveFlip}
           resizeMode="cover"
@@ -100,14 +111,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 30,
   },
-  // page1: {
-  //   flex: 0.3,
-  //   backgroundColor: Colors.bg,
-  //   alignItems: 'center',
-  // },
+  page1: {
+    flex: 0.3,
+    backgroundColor: Colors.bg,
+    alignItems: 'center',
+  },
   page2: {
     position: 'relative',
-    flex: 1.1,
+    flex: 0.8,
     backgroundColor: Colors.bg,
   },
   drinkWave: {
