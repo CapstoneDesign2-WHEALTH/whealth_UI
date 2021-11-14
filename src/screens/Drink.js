@@ -5,8 +5,7 @@ import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import drinkWave from '../../assets/images/drinkWave.png';
 import Donut from '../components/Donut';
-// StatusBar.setBackgroundColor(Colors.bg);
-
+import Curve from '../components/Curve';
 export default function Drink({route, navigation}) {
   let today = new Date();
   const [hour, setHour] = useState(today.getHours());
@@ -14,7 +13,6 @@ export default function Drink({route, navigation}) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={Colors.bg} barStyle="dark-content" />
-      {/* <Animatable.View ref={viewRef} easing={'ease-in-out'}></Animatable.View> */}
       <View style={styles.page0}>
         <Text style={Styles.boldText}>Drink</Text>
         <Text style={Styles.Text}>Today</Text>
@@ -25,6 +23,7 @@ export default function Drink({route, navigation}) {
         </Text>
       </View>
       <View style={styles.page2}>
+        <Curve></Curve>
         <Image
           source={drinkWave}
           resizeMode="cover"
@@ -113,6 +112,7 @@ const styles = StyleSheet.create({
     right: 0,
     width: '100%',
     height: '100%',
+    zIndex: -1,
   },
   page3: {
     flex: 2,
