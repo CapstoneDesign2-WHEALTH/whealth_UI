@@ -8,4 +8,5 @@ export default {
   pink: '#F3D9FF',
   black: '#010B45',
   white: '#fff',
+  lightViolet: '#9182F0',
 };
