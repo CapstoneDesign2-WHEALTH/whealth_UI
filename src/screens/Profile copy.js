@@ -6,68 +6,28 @@ import {
   Image,
   ScrollView,
   Dimensions,
-  Modal,
-  Alert,
-  Pressable,
-  // ActivityIndicator,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
-import drinkWave from '../../assets/images/drinkWave.png';
+import drinkWaveFlip from '../../assets/images/drinkWaveFlip.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
-export default function Alarm({route, navigation}) {
-  const [modalVisible, setModalVisible] = useState(false);
+
+export default function Profile({route, navigation}) {
   return (
     <View style={styles.container}>
-      {/* <StatusBar style="auto" /> */}
       <View style={styles.page0}>
-        <Text style={Styles.boldText}>Alarm</Text>
+        <Text style={Styles.boldText}>Profile</Text>
       </View>
-      <View style={styles.page1}>
-        <Text style={{...Styles.boldText, fontSize: 12}}>Upcoming Alarm</Text>
-        <Text style={{...Styles.boldText, fontSize: 25, marginTop: 10}}>
-          19:45, Sat
-        </Text>
-      </View>
+      {/* <View style={styles.page1}></View>
       <View style={styles.page2}>
         <Image
-          source={drinkWave}
+          source={drinkWaveFlip}
           resizeMode="cover"
           style={styles.drinkWave}></Image>
-      </View>
+      </View> */}
       <View style={styles.page3}>
-        {/* 추가 버튼 */}
-        <View style={styles.add}>
-          <TouchableOpacity
-            onPress={() => {
-              setModalVisible(true);
-            }}>
-            <Ionicons name="add" size={35} color={Colors.white}></Ionicons>
-          </TouchableOpacity>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-              Alert.alert('Modal has been closed.');
-              setModalVisible(!modalVisible);
-            }}>
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <Text style={styles.textStyle}>00:00</Text>
-                <Pressable
-                  style={[styles.button, styles.buttonClose]}
-                  onPress={() => setModalVisible(!modalVisible)}>
-                  <Text style={styles.textStyle}>Make Alarm</Text>
-                </Pressable>
-              </View>
-            </View>
-          </Modal>
-        </View>
         <ScrollView
           showsHorizontalScrollIndicator={false}
           // pagingEnabled={true}
@@ -104,7 +64,6 @@ export default function Alarm({route, navigation}) {
               <Ionicons name="trash-outline" size={20} color={Colors.black} />
             </View>
           </View>
-
           {/* 개별 알람 */}
           <View style={styles.alarmBox}>
             <View style={styles.alarmBox1}>
@@ -121,7 +80,38 @@ export default function Alarm({route, navigation}) {
               <Ionicons name="trash-outline" size={20} color={Colors.black} />
             </View>
           </View>
-
+          {/* 개별 알람 */}
+          <View style={styles.alarmBox}>
+            <View style={styles.alarmBox1}>
+              <Text style={styles.alarmText}>19:45pm</Text>
+              <Text style={{...styles.alarmText, fontSize: 15}}>
+                Take a Pill
+              </Text>
+            </View>
+            <View style={styles.alarmBox2}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
+                <Text style={styles.alarmText2}>Sat</Text>
+              </View>
+              <Ionicons name="trash-outline" size={20} color={Colors.black} />
+            </View>
+          </View>
+          {/* 개별 알람 */}
+          <View style={styles.alarmBox}>
+            <View style={styles.alarmBox1}>
+              <Text style={styles.alarmText}>19:45pm</Text>
+              <Text style={{...styles.alarmText, fontSize: 15}}>
+                Take a Pill
+              </Text>
+            </View>
+            <View style={styles.alarmBox2}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
+                <Text style={styles.alarmText2}>Sat</Text>
+              </View>
+              <Ionicons name="trash-outline" size={20} color={Colors.black} />
+            </View>
+          </View>
           {/* 개별 알람 */}
           <View style={styles.alarmBox}>
             <View style={styles.alarmBox1}>
@@ -194,7 +184,7 @@ const styles = StyleSheet.create({
   },
   page3: {
     flex: 2,
-    position: 'relative',
+    backgroundColor: Colors.bg,
   },
   page4: {
     backgroundColor: Colors.bg,
@@ -255,43 +245,5 @@ const styles = StyleSheet.create({
     ...Styles.Text,
     fontSize: 12,
     color: Colors.black,
-  },
-  add: {
-    position: 'absolute',
-    bottom: 10,
-    right: 20,
-    zIndex: 100,
-    backgroundColor: Colors.darkBlue,
-    borderRadius: 300,
-    height: 50,
-    width: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    width: '80%',
-    height: '30%',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  textStyle: {
-    ...Styles.boldText,
   },
 });
