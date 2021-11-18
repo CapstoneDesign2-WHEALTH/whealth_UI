@@ -1,5 +1,5 @@
 import React, {useEffect, useState, Animated} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
@@ -8,14 +8,14 @@ import Donut from '../components/Donut';
 import Bar from '../components/Bar';
 const data = [
   {
-    percentage: 8,
+    percentage: 82,
     color: 'tomato',
-    max: 10,
+    max: 100,
   },
   {
-    percentage: 14,
+    percentage: 40,
     color: 'skyblue',
-    max: 20,
+    max: 100,
   },
   {
     percentage: 92,
@@ -23,14 +23,14 @@ const data = [
     max: 100,
   },
   {
-    percentage: 240,
+    percentage: 70,
     color: '#222',
-    max: 500,
+    max: 100,
   },
   {
-    percentage: 240,
+    percentage: 80,
     color: '#23e',
-    max: 500,
+    max: 100,
   },
 ];
 

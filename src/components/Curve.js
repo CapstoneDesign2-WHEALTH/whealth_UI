@@ -2,16 +2,14 @@ import React from 'react';
 import {LineChart} from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import {Circle, G, Line, Rect, Text} from 'react-native-svg';
+import Colors from '../constants/Colors';
 
 class ExtrasExample extends React.PureComponent {
   render() {
     const data = [
-      50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80,
+      100, 200, 200, 200, 200, 400, 400, 800, 800, 1200, 1500, 1800, 1900, 2000,
+      2100,
     ];
-
-    /**
-     * Both below functions should preferably be their own React Components
-     */
 
     const HorizontalLine = ({y}) => (
       <Line
@@ -22,7 +20,7 @@ class ExtrasExample extends React.PureComponent {
         // y2={y(50)}
         y1={'0%'}
         y2={'0%'}
-        stroke={'grey'}
+        stroke={Colors.black}
         strokeDasharray={[4, 8]}
         strokeWidth={2}
       />
@@ -47,8 +45,8 @@ class ExtrasExample extends React.PureComponent {
             dy={20}
             alignmentBaseline={'middle'}
             textAnchor={'middle'}
-            stroke={'rgb(134, 65, 244)'}>
-            {`${data[5]}ºC`}
+            stroke={Colors.darkPurple}>
+            {`${data[5]}ml`}
           </Text>
         </G>
         <G x={75 / 2}>
@@ -66,14 +64,14 @@ class ExtrasExample extends React.PureComponent {
 
     return (
       <LineChart
-        style={{height: 200}}
+        style={{height: '100%', width: '100%'}}
         data={data}
         svg={{
-          stroke: 'rgb(134, 65, 244)',
-          strokeWidth: 2,
+          stroke: Colors.darkPurple,
+          strokeWidth: 3,
         }}
-        contentInset={{top: 20, bottom: 20}}
-        curve={shape.curveLinear}>
+        contentInset={{top: 10, bottom: 10}}
+        curve={shape.curveBasisOpen}>
         <HorizontalLine />
         <Tooltip />
       </LineChart>

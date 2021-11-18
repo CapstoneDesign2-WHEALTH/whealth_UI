@@ -34,6 +34,11 @@ export default function Alarm({route, navigation}) {
         </Text>
       </View>
       <View style={styles.page2}>
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={{...Styles.boldText, fontSize: 30, marginTop: 10}}>
+            Take a Pill
+          </Text>
+        </View>
         <Image
           source={drinkWave}
           resizeMode="cover"
@@ -61,7 +66,10 @@ export default function Alarm({route, navigation}) {
                 <Text style={styles.textStyle}>00:00</Text>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
-                  onPress={() => setModalVisible(!modalVisible)}>
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    Alert.alert('Alarm 생성');
+                  }}>
                   <Text style={styles.textStyle}>Make Alarm</Text>
                 </Pressable>
               </View>

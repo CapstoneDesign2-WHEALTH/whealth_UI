@@ -11,36 +11,16 @@ export default function Drink({route, navigation}) {
   let today = new Date();
   const [hour, setHour] = useState(today.getHours());
   const [minute, setMinute] = useState(today.getMinutes());
-  const [day, setDay] = useState(today.getDate());
-  const [month, setMonth] = useState(today.getMonth());
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={Colors.bg} barStyle="dark-content" />
       <View style={styles.page0}>
         <Text style={Styles.boldText}>Drink</Text>
-        <Text style={Styles.Text}>
-          {month + 1}-{day}
-        </Text>
+        <Text style={Styles.Text}>Today</Text>
       </View>
       <View style={styles.page1}>
-        <Text
-          style={{
-            ...Styles.boldText,
-            fontSize: 18,
-            bottom: 3,
-            position: 'absolute',
-          }}>
-          {hour}:00
-        </Text>
-
-        <Text
-          style={{
-            ...Styles.boldText,
-            fontSize: 18,
-            bottom: 30,
-            position: 'absolute',
-          }}>
-          Target : 3000ml
+        <Text style={{...Styles.Text}}>
+          {hour} :{minute}
         </Text>
       </View>
       <View style={styles.page2}>
@@ -54,7 +34,8 @@ export default function Drink({route, navigation}) {
         <View style={styles.drinkInfo}>
           <View style={styles.drinkInfo0}>
             <View style={styles.drinkInfo1}>
-              <Text style={styles.drinkInfo1Text}>Target</Text>
+              {/* <Text style={styles.drinkInfo1Text}>Target</Text> */}
+              <Info />
               <View style={styles.bar}></View>
               <View
                 style={{
@@ -121,7 +102,6 @@ const styles = StyleSheet.create({
     flex: 0.3,
     backgroundColor: Colors.bg,
     alignItems: 'center',
-    position: 'relative',
   },
   page2: {
     position: 'relative',
