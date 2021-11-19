@@ -12,11 +12,8 @@ target 'whealth' do
     :hermes_enabled => false
   )
 
-  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
-  pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
-  pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
 
   target 'whealthTests' do
     inherit! :complete
