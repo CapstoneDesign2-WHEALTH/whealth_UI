@@ -3,6 +3,7 @@ import {Defs, LinearGradient, Stop, Line} from 'react-native-svg';
 import {LineChart, Grid} from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import Colors from '../constants/Colors';
+import {View} from 'react-native';
 class GradientLineExample extends React.PureComponent {
   render() {
     const data = [0, 0, 0, 100, 400, 800, 1300, 1300, 1600, 1800, 2000];
@@ -23,13 +24,10 @@ class GradientLineExample extends React.PureComponent {
         />
 
         <Line
-          key={'zero-axis'}
           x1={'0%'}
           x2={'100%'}
-          // y1={y(50)}
-          // y2={y(50)}
-          y1={y(50)}
-          y2={y(50)}
+          y1={y(0)}
+          y2={y(0)}
           stroke={Colors.gray}
           strokeDasharray={[4, 8]}
           strokeWidth={1}
@@ -53,12 +51,12 @@ class GradientLineExample extends React.PureComponent {
         curve={shape.curveBasisOpen}
         contentInset={{top: 20, bottom: 20}}
         svg={{
-          strokeWidth: 4,
+          strokeWidth: 3,
           stroke: 'url(#gradient)',
         }}>
         {/* <Grid /> */}
-        <Gradient />
         <HorizontalLine />
+        <Gradient />
       </LineChart>
     );
   }

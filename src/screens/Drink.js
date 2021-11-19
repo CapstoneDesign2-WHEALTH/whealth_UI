@@ -44,8 +44,9 @@ export default function Drink({route, navigation}) {
         <View
           style={{
             position: 'relative',
-            width: '100%',
-            height: '100%',
+            alignContent: 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}>
           <Curve></Curve>
         </View>
@@ -58,7 +59,7 @@ export default function Drink({route, navigation}) {
         <View style={styles.drinkInfo}>
           <View style={styles.drinkInfo0}>
             <View style={styles.drinkInfo1}>
-              <Text style={styles.drinkInfo1Text}>Target</Text>
+              {/* <Text style={styles.drinkInfo1Text}>물의 효능 </Text>
               <View style={styles.bar}></View>
               <View
                 style={{
@@ -67,7 +68,8 @@ export default function Drink({route, navigation}) {
                   left: 40,
                   zIndex: -1,
                 }}></View>
-              <Text style={styles.drinkInfo2Text}> 3000 mL</Text>
+              <Text style={styles.drinkInfo2Text}> 3000 mL</Text> */}
+              <Info></Info>
             </View>
             <View style={styles.drinkInfo2}>
               <Text style={styles.drinkInfo1Text}>Drink</Text>
