@@ -1,40 +1,82 @@
-import React, {useState, useEffect} from 'react';
-import {Text, View, StyleSheet, ScrollView, ColorPropType} from 'react-native';
-import {color} from 'react-native-reanimated';
-import Styles from '../common/Styles';
+import React from 'react';
+import {LineChart} from 'react-native-svg-charts';
+import * as shape from 'd3-shape';
+import {Circle, G, Line, Rect, Text} from 'react-native-svg';
 import Colors from '../constants/Colors';
-import Svg from 'react-native-svg';
-export default function Curve() {
-  const data = {
-    0: 0,
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 100,
-    5: 100,
-    6: 200,
-    8: 300,
-    9: 500,
-    10: 800,
-    11: 900,
-    12: 1000,
-    13: 1500,
-  };
 
-  return (
-    <View style={styles.Bar}>
-      <Text style={styles.text}>Hi</Text>
-    </View>
-  );
+class ExtrasExample extends React.PureComponent {
+  render() {
+    const data = [
+      100, 200, 200, 200, 200, 400, 400, 800, 800, 1200, 1500, 1800, 1900, 2000,
+      2100,
+    ];
+
+    const HorizontalLine = ({y}) => (
+      <Line
+        key={'zero-axis'}
+        x1={'0%'}
+        x2={'100%'}
+        // y1={y(50)}
+        // y2={y(50)}
+        y1={'0%'}
+        y2={'0%'}
+        stroke={Colors.black}
+        strokeDasharray={[4, 8]}
+        strokeWidth={2}
+      />
+    );
+
+    const Tooltip = ({x, y}) => (
+      <G
+        x={x(5) - 75 / 2}
+        key={'tooltip'}
+        onPress={() => console.log('tooltip clicked')}>
+        <G y={50}>
+          <Rect
+            height={40}
+            width={75}
+            stroke={'grey'}
+            fill={'white'}
+            ry={10}
+            rx={10}
+          />
+          <Text
+            x={75 / 2}
+            dy={20}
+            alignmentBaseline={'middle'}
+            textAnchor={'middle'}
+            stroke={Colors.darkPurple}>
+            {`${data[5]}ml`}
+          </Text>
+        </G>
+        <G x={75 / 2}>
+          <Line y1={50 + 40} y2={y(data[5])} stroke={'grey'} strokeWidth={2} />
+          <Circle
+            cy={y(data[5])}
+            r={6}
+            stroke={'rgb(134, 65, 244)'}
+            strokeWidth={2}
+            fill={'white'}
+          />
+        </G>
+      </G>
+    );
+
+    return (
+      <LineChart
+        style={{height: '100%', width: '100%'}}
+        data={data}
+        svg={{
+          stroke: Colors.darkPurple,
+          strokeWidth: 3,
+        }}
+        contentInset={{top: 10, bottom: 10}}
+        curve={shape.curveBasisOpen}>
+        <HorizontalLine />
+        <Tooltip />
+      </LineChart>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    zIndex: 100,
-  },
-  text: {
-    ...Styles.boldText,
-    color: Colors.black,
-  },
-});
+export default ExtrasExample;

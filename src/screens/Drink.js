@@ -23,9 +23,13 @@ export default function Drink({route, navigation}) {
         </Text>
       </View>
       <View style={styles.page1}>
-        <Text style={{...styles.timeText, left: 20}}>{hour - 4} 00</Text>
-        <Text style={styles.timeText}>{hour} 00</Text>
-        <Text style={{...styles.timeText, right: 20}}>{hour + 4} 00</Text>
+        <Text style={{...styles.timeText, left: 30, color: Colors.gray}}>
+          {hour - 4} 00
+        </Text>
+        <Text style={{...styles.timeText, right: 30}}>{hour} 00</Text>
+        {/* <Text style={{...styles.timeText, right: 20, color: Colors.gray}}>
+          {hour + 4} 00
+        </Text> */}
         <Text
           style={{
             ...Styles.boldText,
@@ -37,7 +41,14 @@ export default function Drink({route, navigation}) {
         </Text>
       </View>
       <View style={styles.page2}>
-        <Curve></Curve>
+        <View
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+          }}>
+          <Curve></Curve>
+        </View>
         <Image
           source={drinkWave}
           resizeMode="cover"
@@ -213,7 +224,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   timeText: {
-    ...Styles.Text,
+    ...Styles.boldText,
     fontSize: 15,
     bottom: 3,
     position: 'absolute',

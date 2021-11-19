@@ -49,7 +49,7 @@ export default function Profile({route, navigation}) {
                 }}>
                 <Text style={styles.alarmText2}>4.6 </Text>
                 <Text
-                  style={{...styles.alarmText2, fontSize: 20, marginLeft: 0}}>
+                  style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
                   km
                 </Text>
                 {/* <Text style={styles.alarmText2}>Sat</Text> */}
