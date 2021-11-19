@@ -23,16 +23,9 @@ export default function Drink({route, navigation}) {
         </Text>
       </View>
       <View style={styles.page1}>
-        <Text
-          style={{
-            ...Styles.boldText,
-            fontSize: 18,
-            bottom: 3,
-            position: 'absolute',
-          }}>
-          {hour}:00
-        </Text>
-
+        <Text style={{...styles.timeText, left: 20}}>{hour - 4} 00</Text>
+        <Text style={styles.timeText}>{hour} 00</Text>
+        <Text style={{...styles.timeText, right: 20}}>{hour + 4} 00</Text>
         <Text
           style={{
             ...Styles.boldText,
@@ -218,5 +211,12 @@ const styles = StyleSheet.create({
   },
   donut: {
     position: 'absolute',
+  },
+  timeText: {
+    ...Styles.Text,
+    fontSize: 15,
+    bottom: 3,
+    position: 'absolute',
+    color: Colors.darkBlue,
   },
 });
