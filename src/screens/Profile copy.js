@@ -35,113 +35,26 @@ export default function Profile({route, navigation}) {
           {/* 개별 알람 */}
           <View style={styles.alarmBox}>
             <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
+              <View style={{flexDirection: 'row'}}>
+                <Ionicons name="flame" size={20} color="red" />
+                <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
+              </View>
             </View>
             <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'flex-end',
+                  justifyContent: 'center',
+                }}>
+                <Text style={styles.alarmText2}>4.6 </Text>
+                <Text
+                  style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
+                  km
+                </Text>
+                {/* <Text style={styles.alarmText2}>Sat</Text> */}
               </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
+              {/* <Ionicons name="trash-outline" size={20} color={Colors.black} /> */}
             </View>
           </View>
         </ScrollView>
@@ -212,7 +125,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     width: '100%',
-    height: '60%',
+    height: '40%',
     top: 0,
     backgroundColor: Colors.white,
     borderBottomColor: Colors.bg,
@@ -225,7 +138,7 @@ const styles = StyleSheet.create({
   alarmBox2: {
     position: 'absolute',
     width: '100%',
-    height: '40%',
+    height: '60%',
     bottom: 0,
     // backgroundColor: '#E3DDF8',
     backgroundColor: Colors.white,
@@ -238,12 +151,13 @@ const styles = StyleSheet.create({
   },
   alarmText: {
     ...Styles.boldText,
-    fontSize: 30,
-    // color: Colors.white,
+    fontSize: 15,
+    color: 'red',
   },
   alarmText2: {
     ...Styles.Text,
-    fontSize: 12,
+    marginLeft: 15,
+    fontSize: 30,
     color: Colors.black,
   },
 });
