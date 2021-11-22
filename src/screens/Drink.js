@@ -28,9 +28,6 @@ export default function Drink({route, navigation}) {
           {hour - 4} 00
         </Text>
         <Text style={{...styles.timeText, right: 30}}>{hour} 00</Text>
-        {/* <Text style={{...styles.timeText, right: 20, color: Colors.gray}}>
-          {hour + 4} 00
-        </Text> */}
         <Text
           style={{
             ...Styles.boldText,
@@ -38,7 +35,7 @@ export default function Drink({route, navigation}) {
             bottom: 30,
             position: 'absolute',
           }}>
-          Target : 3000ml
+          Target &nbsp;&nbsp;3000ml
         </Text>
       </View>
       <View style={styles.page2}>

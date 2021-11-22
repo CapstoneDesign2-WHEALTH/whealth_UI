@@ -61,7 +61,7 @@ export default class App extends React.Component {
       <SafeAreaView style={styles.container}>
         <View style={styles.carousel}>
           <Carousel
-            layout={'default'}
+            layout={'tinder'}
             ref={ref => (this.carousel = ref)}
             data={this.state.carouselItems}
             sliderWidth={SCREEN_WIDTH / 1.9}

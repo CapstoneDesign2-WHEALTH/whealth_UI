@@ -21,6 +21,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
 export default function Alarm({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [deleteAlarm, setDeleteAlarm] = useState(false);
   return (
     <View style={styles.container}>
       {/* <StatusBar style="auto" /> */}
@@ -53,6 +54,8 @@ export default function Alarm({route, navigation}) {
             }}>
             <Ionicons name="add" size={35} color={Colors.white}></Ionicons>
           </TouchableOpacity>
+
+          {/* 알람 추가 모달 창 */}
           <Modal
             animationType="slide"
             transparent={true}
@@ -76,9 +79,32 @@ export default function Alarm({route, navigation}) {
             </View>
           </Modal>
         </View>
+        {/* 알람 삭제 모달 창 */}
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={deleteAlarm}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setDeleteAlarm(!deleteAlarm);
+          }}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.textStyle}>알람을 삭제하시겠어요?</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => {
+                  setDeleteAlarm(!deleteAlarm);
+                  Alert.alert('알람 삭제 완료');
+                }}>
+                <Text style={styles.textStyle}>알람 삭제</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+
         <ScrollView
           showsHorizontalScrollIndicator={false}
-          // pagingEnabled={true}
           contentContainerStyle={styles.scroll}>
           {/* 개별 알람 */}
           <View style={styles.alarmBox}>
@@ -93,73 +119,12 @@ export default function Alarm({route, navigation}) {
                 <Ionicons name="alarm-outline" size={20} color={Colors.black} />
                 <Text style={styles.alarmText2}>Sat</Text>
               </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
-            </View>
-          </View>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
-              </View>
-              <Ionicons name="trash-outline" size={20} color={Colors.black} />
+              <TouchableOpacity
+                onPress={() => {
+                  setDeleteAlarm(!deleteAlarm);
+                }}>
+                <Ionicons name="trash-outline" size={20} color={Colors.black} />
+              </TouchableOpacity>
             </View>
           </View>
         </ScrollView>
