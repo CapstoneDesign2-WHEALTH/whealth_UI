@@ -7,6 +7,7 @@ import drinkWave from '../../assets/images/drinkWave.png';
 import Donut from '../components/Donut';
 import Curve from '../components/Curve';
 import Info from '../components/Info';
+import Info2 from '../components/Info2';
 export default function Drink({route, navigation}) {
   let today = new Date();
   const [hour, setHour] = useState(today.getHours());
@@ -50,6 +51,7 @@ export default function Drink({route, navigation}) {
           }}>
           <Curve></Curve>
         </View>
+
         <Image
           source={drinkWave}
           resizeMode="cover"
@@ -59,33 +61,10 @@ export default function Drink({route, navigation}) {
         <View style={styles.drinkInfo}>
           <View style={styles.drinkInfo0}>
             <View style={styles.drinkInfo1}>
-              {/* <Text style={styles.drinkInfo1Text}>물의 효능 </Text>
-              <View style={styles.bar}></View>
-              <View
-                style={{
-                  ...styles.bar,
-                  backgroundColor: '#F3D9FF',
-                  left: 40,
-                  zIndex: -1,
-                }}></View>
-              <Text style={styles.drinkInfo2Text}> 3000 mL</Text> */}
-              <Info></Info>
+              <Info />
             </View>
             <View style={styles.drinkInfo2}>
-              <Text style={styles.drinkInfo1Text}>Drink</Text>
-              <View
-                style={{
-                  ...styles.bar,
-                  backgroundColor: Colors.darkBlue,
-                }}></View>
-              <View
-                style={{
-                  ...styles.bar,
-                  backgroundColor: Colors.lightBlue,
-                  left: 40,
-                  zIndex: -1,
-                }}></View>
-              <Text style={styles.drinkInfo2Text}>2000 mL</Text>
+              <Info2 />
             </View>
           </View>
           <View style={styles.drinkInfo3}>

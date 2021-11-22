@@ -19,6 +19,7 @@ export function animatedStyles(index, animatedValue, carouselProps) {
   if (carouselProps.inactiveSlideOpacity < 1) {
     animatedOpacity = {
       opacity: animatedValue.interpolate({
+        // inputRange: [-1, 0, 1],
         inputRange: [-1, 0, 1],
         outputRange: [
           carouselProps.inactiveSlideOpacity,
