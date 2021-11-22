@@ -68,6 +68,7 @@ export default function Drink({route, navigation}) {
             </View>
           </View>
           <View style={styles.drinkInfo3}>
+            {/* <Text style={styles.drinkInfo3Text}>Target</Text> */}
             <Text style={styles.drinkInfo3Text}>Left</Text>
             <Text style={{...styles.drinkInfo3Text, top: '20%'}}>1000mL</Text>
             <View stlye={styles.donut}>

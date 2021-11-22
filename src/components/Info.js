@@ -72,7 +72,7 @@ export default class App extends React.Component {
             left: 40,
             zIndex: -1,
           }}></View>
-        <Text style={{...Styles.text, fontSize: 13, marginTop: 50}}>
+        <Text style={{...Styles.Text, fontSize: 13, marginTop: 50}}>
           {item.text}
         </Text>
       </View>

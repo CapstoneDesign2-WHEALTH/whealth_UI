@@ -14,7 +14,7 @@ export default class App extends React.Component {
       carouselItems: [
         {
           title: 'Bad',
-          text: '한 번에 많이 마시면 소화가 잘 되지 않습니다.',
+          text: '물을 한 번에 많이 마시면 소화가 잘 되지 않습니다.',
         },
         {
           title: 'Bad',
@@ -44,7 +44,12 @@ export default class App extends React.Component {
             left: 40,
             zIndex: -1,
           }}></View>
-        <Text style={{...Styles.text, fontSize: 13, marginTop: 50}}>
+        <Text
+          style={{
+            ...Styles.Text,
+            fontSize: 13,
+            marginTop: 50,
+          }}>
           {item.text}
         </Text>
       </View>
@@ -64,7 +69,7 @@ export default class App extends React.Component {
             renderItem={this._renderItem}
             onSnapToItem={index => this.setState({activeIndex: index})}
             autoplay
-            autoplayInterval={3000}
+            autoplayInterval={4000}
             loop
           />
         </View>
