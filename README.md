@@ -1,4 +1,4 @@
-# whealth_UI
+# Whealth_UI
 ---
 ## 구현 현황
 ### 1. 첫 프로토타입
@@ -42,6 +42,7 @@
 ### 3. Drink Component 디자인
 - Donut Chart 도입 (2021-11-14)
 - Svg Chart 도입 (2021-11-14)
+- Carousel 도입 (2021-11-21)
 ### 4. Chart Component 디자인
 - Donut Chart 도입 (2021-11-14)
 ### 5. Alarm Component 디자인
@@ -55,12 +56,13 @@
 
 ### 9. Apple HealthKit 연동
 - 연동 확인 완료 (2021-11-19)
+
+
 ---
 ## 컴포넌트 별 필요 데이터
 
 ### Drink 컴포넌트
 - 금일 시간별 음수량 데이터 (0시 ~ 24시)
-- 
 ### Chart 컴포넌트
 - 지난 일주일 간의 일별 음수량 데이터
 ### Alarm 컴포넌트
