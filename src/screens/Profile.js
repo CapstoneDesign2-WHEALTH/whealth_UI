@@ -1,3 +1,7 @@
+import AppleHealthKit, {
+  HealthValue,
+  HealthKitPermissions,
+} from 'react-native-health';
 import React, {useEffect, useState, Animated} from 'react';
 import {
   StyleSheet,
@@ -12,9 +16,127 @@ import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import bg from '../../assets/images/bg.png';
-import waterMan from '../../assets/images/waterman.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
+/* Permission options */
+let options = {
+  permissions: {
+    read: [
+      AppleHealthKit.Constants.Permissions.HeartRate,
+      AppleHealthKit.Constants.Permissions.Steps,
+      AppleHealthKit.Constants.Permissions.StepCount,
+      AppleHealthKit.Constants.Permissions.ActiveEnergyBurned,
+      AppleHealthKit.Constants.Permissions.Height,
+      AppleHealthKit.Constants.Permissions.Weight,
+      AppleHealthKit.Constants.Permissions.SleepAnalysis,
+      AppleHealthKit.Constants.Permissions.BiologicalSex,
+      AppleHealthKit.Constants.Permissions.DateOfBirth,
+      AppleHealthKit.Constants.Permissions.Water,
+      AppleHealthKit.Constants.Permissions.HeartRate,
+    ],
+    write: [
+      AppleHealthKit.Constants.Permissions.Steps,
+      AppleHealthKit.Constants.Permissions.StepCount,
+      AppleHealthKit.Constants.Permissions.Weight,
+      AppleHealthKit.Constants.Permissions.Water,
+    ],
+  },
+};
+
+// Initializing HealthKit
+AppleHealthKit.initHealthKit(
+  (options: HealthInputOptions),
+  (err: string, results: boolean) => {
+    if (err) {
+      console.log('error initializing Healthkit: ', err);
+      return;
+    }
+    console.log('we got permissions!');
+    // Healthkit is initialized...
+    // now safe to read and write Healthkit data...
+  },
+);
+
+//Setting Weight Option.
+let WeightOption = {
+  unit: 'kilogram',
+};
+
+//Setting steop option
+let StepOption = {
+  date: new Date().toISOString(), // optional; default now
+  includeManuallyAdded: false, // optional: default true
+};
+
+// Variables for HK datas
+let Age, BirthDate;
+let Weight, Height;
+let Steps, Sex;
+
+//Method to get DateOfBirth
+AppleHealthKit.getDateOfBirth(
+  null,
+  (err: Object, results: HealthDateOfBirth) => {
+    if (err) {
+      return;
+    }
+
+    console.log(results);
+    //console.log('type of?')
+    //console.log(typeof results)
+    //console.log(typeof results.age)
+    //console.log(typeof results.value)
+
+    Age = results.age;
+    BirthDate = results.value.substring(0, 10);
+    //return results
+  },
+);
+
+//Method to get  Height
+AppleHealthKit.getLatestHeight(null, (err: string, results: HealthValue) => {
+  if (err) {
+    console.log('error getting latest height: ', err);
+    return;
+  }
+  console.log(results);
+  var InchHeight = parseInt(results.value);
+  var CentHeight = InchHeight * 2.54;
+  Height = CentHeight;
+});
+
+//Method to get Weight
+AppleHealthKit.getLatestWeight(
+  WeightOption,
+  (err: string, results: HealthValue) => {
+    if (err) {
+      console.log('error getting latest weight: ', err);
+      return;
+    }
+    Weight = results.value;
+  },
+);
+
+//Method to get sex
+AppleHealthKit.getBiologicalSex(null, (err: Object, results: Object) => {
+  if (err) {
+    return;
+  }
+  //console.log(results)
+  Sex = results.value;
+});
+
+// Method to get StepCount of today
+AppleHealthKit.getStepCount(
+  (StepOption: HealthInputOptions),
+  (err: Object, results: HealthValue) => {
+    if (err) {
+      return;
+    }
+    Steps = results.value;
+    //console.log(results)
+  },
+);
 
 export default function Profile({route, navigation}) {
   return (
@@ -40,19 +162,19 @@ export default function Profile({route, navigation}) {
               </View>
               <View style={styles.cardData}>
                 <Text style={styles.profileCardText}>성별</Text>
-                <Text style={styles.profileCardText}>성별</Text>
+                <Text style={styles.profileCardText}>{Sex}</Text>
               </View>
               <View style={styles.cardData}>
                 <Text style={styles.profileCardText}>생년월일</Text>
-                <Text style={styles.profileCardText}>생년월일</Text>
+                <Text style={styles.profileCardText}>{BirthDate}</Text>
               </View>
               <View style={styles.cardData}>
                 <Text style={styles.profileCardText}>나이</Text>
-                <Text style={styles.profileCardText}>나이</Text>
+                <Text style={styles.profileCardText}>{Age}</Text>
               </View>
               <View style={styles.cardData}>
                 <Text style={styles.profileCardText}>키</Text>
-                <Text style={styles.profileCardText}>키</Text>
+                <Text style={styles.profileCardText}>{Height}</Text>
               </View>
             </View>
           </View>
@@ -188,7 +310,7 @@ const styles = StyleSheet.create({
     height: '95%',
     // backgroundColor: Colors.bg,
     marginBottom: 20,
-    borderWidth: 6,
+    borderWidth: 2,
     borderColor: Colors.black,
     // backgroundColor: Colors.black,
   },

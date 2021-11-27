@@ -10,6 +10,7 @@
 //   ScrollView,
 //   Dimensions,
 //   ImageBackground,
+//   Image,
 // } from 'react-native';
 // import * as Animatable from 'react-native-animatable';
 // import Styles from '../common/Styles';
