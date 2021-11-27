@@ -100,7 +100,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.bg,
+    // backgroundColor: Colors.bg,
     fontFamily: 'Lato-Bold',
     position: 'relative',
   },
@@ -115,8 +115,6 @@ const styles = StyleSheet.create({
     width: '85%',
     height: '100%',
     padding: 20,
-    // marginLeft: 25,
-    // marginRight: 25,
   },
   bar: {
     position: 'absolute',

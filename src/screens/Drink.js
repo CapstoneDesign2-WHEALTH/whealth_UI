@@ -72,7 +72,6 @@ export default function Drink({route, navigation}) {
               </View>
             </View>
             <View style={styles.drinkInfo3}>
-              {/* <Text style={styles.drinkInfo3Text}>Target</Text> */}
               <Text style={styles.drinkInfo3Text}>Left</Text>
               <Text style={{...styles.drinkInfo3Text, top: '20%'}}>1000mL</Text>
               <View stlye={styles.donut}>
@@ -97,28 +96,24 @@ export default function Drink({route, navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#000000c0',
     fontFamily: 'Lato-Bold',
     marginTop: 15,
   },
   page0: {
     flex: 0.4,
     flexDirection: 'row',
-    // backgroundColor: '#000000c0',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 30,
   },
   page1: {
     flex: 0.3,
-    // backgroundColor: '#000000c0',
     alignItems: 'center',
     position: 'relative',
   },
   page2: {
     position: 'relative',
     flex: 0.8,
-    // backgroundColor: '#000000c0',
   },
   bg: {
     position: 'relative',
@@ -128,7 +123,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: '100%',
-    // zIndex: 100,
   },
   page3: {
     flex: 2,
@@ -152,13 +146,11 @@ const styles = StyleSheet.create({
     height: '45%',
     borderRadius: 20,
     marginBottom: '10%',
-    // backgroundColor: Colors.white,
     position: 'relative',
   },
   drinkInfo2: {
     height: '45%',
     borderRadius: 20,
-    // backgroundColor: Colors.white,
   },
   drinkInfo3: {
     backgroundColor: Colors.black,
