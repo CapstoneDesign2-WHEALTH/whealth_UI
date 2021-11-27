@@ -41,11 +41,7 @@ const Stack = createStackNavigator();
 const RootStack = () => {
   return (
     <Stack.Navigator screenOptions={options}>
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        // options={{title: 'Whealth', headerShown: true}}
-      />
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Navtab" component={Navtab} />
     </Stack.Navigator>
   );

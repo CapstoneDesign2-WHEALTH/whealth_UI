@@ -13,14 +13,6 @@ const Home = ({navigation}) => {
   const navigate = route => navigation.navigate(route);
   return (
     <View style={styles.container}>
-      {/* <ImageBackground
-      source={loginBg}
-      resizeMode="stretch"
-      style={{
-        width: '50%',
-        height: '50%',
-      }}
-    /> */}
       <StatusBar backgroundColor={Colors.bg} barStyle="dark-content" />
       <View style={styles.page0}></View>
       <View style={styles.page1}>
@@ -64,9 +56,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.bg,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  drinkWave: {
-    // transform: [{scale: 0.8}],
   },
   page3: {
     flex: 2,

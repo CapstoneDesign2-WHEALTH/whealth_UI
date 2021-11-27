@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-// import Icon, {Icons} from '../components/Icons';
 import Colors from '../constants/Colors';
 import Drink from '../screens/Drink';
 import Chart from '../screens/Chart';
@@ -10,12 +9,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Tab = createMaterialTopTabNavigator();
-// const Tab = createBottomTabNavigator();
 const TabArr = [
   {
     route: 'Drink',
     label: 'Drink',
-    // type: Icons.Ionicons,
     activeIcon: 'water',
     inActiveIcon: 'water-outline',
     component: Drink,
@@ -23,7 +20,6 @@ const TabArr = [
   {
     route: 'Chart',
     label: 'Chart',
-    // type: Icons.Ionicons,
     activeIcon: 'stats-chart',
     inActiveIcon: 'stats-chart-outline',
     component: Chart,
@@ -31,7 +27,6 @@ const TabArr = [
   {
     route: 'Alarm',
     label: 'Alarm',
-    // type: Icons.Ionicons,
     activeIcon: 'alarm',
     inActiveIcon: 'alarm-outline',
     component: Alarm,
@@ -39,8 +34,6 @@ const TabArr = [
   {
     route: 'Profile',
     label: 'Profile',
-    // type: Icons.FontAwesome,
-    activeIcon: 'person',
     inActiveIcon: 'person-outline',
     component: Profile,
   },
