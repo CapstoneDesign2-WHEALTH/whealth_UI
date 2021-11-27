@@ -6,11 +6,13 @@ import {
   ScrollView,
   Dimensions,
   ImageBackground,
+  Image,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import bg from '../../assets/images/bg.png';
+import waterMan from '../../assets/images/waterman.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
 
@@ -21,59 +23,45 @@ export default function Profile({route, navigation}) {
         <View style={styles.page0}>
           <Text style={Styles.boldText}>Profile</Text>
         </View>
+        <View style={styles.page2}>
+          {/* <Text>성별, 생년월일, 키, 나이, 이름</Text> */}
+          <View style={styles.profileCard}>
+            <View style={styles.profileCard2}>
+              <Image
+                source={waterMan}
+                resizeMode="contain"
+                style={styles.waterMan}
+              />
+            </View>
+            <View style={styles.profileCard3}>
+              <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>이름</Text>
+                <Text style={styles.profileCardText}>이름</Text>
+              </View>
+              <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>성별</Text>
+                <Text style={styles.profileCardText}>성별</Text>
+              </View>
+              <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>생년월일</Text>
+                <Text style={styles.profileCardText}>생년월일</Text>
+              </View>
+              <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>나이</Text>
+                <Text style={styles.profileCardText}>나이</Text>
+              </View>
+              <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>키</Text>
+                <Text style={styles.profileCardText}>키</Text>
+              </View>
+            </View>
+          </View>
+        </View>
         <View style={styles.page3}>
           <ScrollView
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.scroll}>
-            {/* 개별 알람 */}
-            <View style={styles.alarmBox}>
-              <View style={styles.alarmBox1}>
-                <View style={{flexDirection: 'row'}}>
-                  <Ionicons name="flame" size={20} color="red" />
-                  <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
-                </View>
-              </View>
-              <View style={styles.alarmBox2}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'flex-end',
-                    justifyContent: 'center',
-                  }}>
-                  <Text style={styles.alarmText2}>4.6 </Text>
-                  <Text
-                    style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
-                    km
-                  </Text>
-                  {/* <Text style={styles.alarmText2}>Sat</Text> */}
-                </View>
-                {/* <Ionicons name="trash-outline" size={20} color={Colors.black} /> */}
-              </View>
-            </View>
-            {/* 개별 알람 */}
-            <View style={styles.alarmBox}>
-              <View style={styles.alarmBox1}>
-                <View style={{flexDirection: 'row'}}>
-                  <Ionicons name="flame" size={20} color="red" />
-                  <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
-                </View>
-              </View>
-              <View style={styles.alarmBox2}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'flex-end',
-                    justifyContent: 'center',
-                  }}>
-                  <Text style={styles.alarmText2}>4.6 </Text>
-                  <Text
-                    style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
-                    km
-                  </Text>
-                </View>
-              </View>
-            </View>
-            {/* 개별 알람 */}
+            {/* 데이터 */}
             <View style={styles.alarmBox}>
               <View style={styles.alarmBox1}>
                 <View style={{flexDirection: 'row'}}>
@@ -120,11 +108,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   page0: {
-    flex: 0.4,
+    flex: 0.6,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 30,
+  },
+  page2: {
+    flex: 2,
   },
   page3: {
     flex: 3,
@@ -186,5 +177,51 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontSize: 30,
     color: Colors.black,
+  },
+  profileCard: {
+    position: 'relative',
+    marginHorizontal: '3%',
+    borderRadius: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '95%',
+    // backgroundColor: Colors.bg,
+    marginBottom: 20,
+    borderWidth: 6,
+    borderColor: Colors.black,
+    // backgroundColor: Colors.black,
+  },
+  profileCard2: {
+    width: '50%',
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  profileCard3: {
+    // backgroundColor: Colors.pink,
+    width: '50%',
+    height: '100%',
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  cardData: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    paddingHorizontal: 20,
+  },
+  profileCardText: {
+    ...Styles.boldText,
+    paddingVertical: 10,
+    // color: Colors.white,
+    fontSize: 16,
+  },
+  waterMan: {
+    position: 'relative',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
   },
 });
