@@ -3,104 +3,133 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   ScrollView,
   Dimensions,
+  ImageBackground,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
-import drinkWaveFlip from '../../assets/images/drinkWaveFlip.png';
+import bg from '../../assets/images/bg.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
 
 export default function Profile({route, navigation}) {
   return (
-    <View style={styles.container}>
-      <View style={styles.page0}>
-        <Text style={Styles.boldText}>Profile</Text>
-      </View>
-      {/* <View style={styles.page1}></View>
-      <View style={styles.page2}>
-        <Image
-          source={drinkWaveFlip}
-          resizeMode="cover"
-          style={styles.drinkWave}></Image>
-      </View> */}
-      <View style={styles.page3}>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          // pagingEnabled={true}
-          contentContainerStyle={styles.scroll}>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <View style={{flexDirection: 'row'}}>
-                <Ionicons name="flame" size={20} color="red" />
-                <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
+    <ImageBackground source={bg} resizeMode="cover" style={styles.bg}>
+      <View style={styles.container}>
+        <View style={styles.page0}>
+          <Text style={Styles.boldText}>Profile</Text>
+        </View>
+        <View style={styles.page3}>
+          <ScrollView
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.scroll}>
+            {/* 개별 알람 */}
+            <View style={styles.alarmBox}>
+              <View style={styles.alarmBox1}>
+                <View style={{flexDirection: 'row'}}>
+                  <Ionicons name="flame" size={20} color="red" />
+                  <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
+                </View>
+              </View>
+              <View style={styles.alarmBox2}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'flex-end',
+                    justifyContent: 'center',
+                  }}>
+                  <Text style={styles.alarmText2}>4.6 </Text>
+                  <Text
+                    style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
+                    km
+                  </Text>
+                  {/* <Text style={styles.alarmText2}>Sat</Text> */}
+                </View>
+                {/* <Ionicons name="trash-outline" size={20} color={Colors.black} /> */}
               </View>
             </View>
-            <View style={styles.alarmBox2}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'flex-end',
-                  justifyContent: 'center',
-                }}>
-                <Text style={styles.alarmText2}>4.6 </Text>
-                <Text
-                  style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
-                  km
-                </Text>
-                {/* <Text style={styles.alarmText2}>Sat</Text> */}
+            {/* 개별 알람 */}
+            <View style={styles.alarmBox}>
+              <View style={styles.alarmBox1}>
+                <View style={{flexDirection: 'row'}}>
+                  <Ionicons name="flame" size={20} color="red" />
+                  <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
+                </View>
               </View>
-              {/* <Ionicons name="trash-outline" size={20} color={Colors.black} /> */}
+              <View style={styles.alarmBox2}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'flex-end',
+                    justifyContent: 'center',
+                  }}>
+                  <Text style={styles.alarmText2}>4.6 </Text>
+                  <Text
+                    style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
+                    km
+                  </Text>
+                </View>
+              </View>
             </View>
-          </View>
-        </ScrollView>
+            {/* 개별 알람 */}
+            <View style={styles.alarmBox}>
+              <View style={styles.alarmBox1}>
+                <View style={{flexDirection: 'row'}}>
+                  <Ionicons name="flame" size={20} color="red" />
+                  <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
+                </View>
+              </View>
+              <View style={styles.alarmBox2}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'flex-end',
+                    justifyContent: 'center',
+                  }}>
+                  <Text style={styles.alarmText2}>4.6 </Text>
+                  <Text
+                    style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
+                    km
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+        <View style={styles.page4}></View>
       </View>
-      <View style={styles.page4}></View>
-    </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.bg,
     fontFamily: 'Lato-Bold',
+    marginTop: 15,
+  },
+  bg: {
+    position: 'relative',
+    bottom: 0,
+    right: 0,
+    flex: 1,
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
   },
   page0: {
     flex: 0.4,
     flexDirection: 'row',
-    backgroundColor: Colors.bg,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 30,
   },
-  page1: {
-    flex: 0.3,
-    backgroundColor: Colors.bg,
-    alignItems: 'center',
-  },
-  page2: {
-    position: 'relative',
-    flex: 0.8,
-    backgroundColor: Colors.bg,
-  },
-  drinkWave: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    width: '100%',
-    height: '100%',
-  },
   page3: {
-    flex: 2,
-    backgroundColor: Colors.bg,
+    flex: 3,
   },
   page4: {
-    backgroundColor: Colors.bg,
     height: 80,
   },
   scroll: {
@@ -117,7 +146,6 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH - 50,
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: '#4c5efd',
     height: 100,
   },
   alarmBox1: {
@@ -140,7 +168,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '60%',
     bottom: 0,
-    // backgroundColor: '#E3DDF8',
     backgroundColor: Colors.white,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,

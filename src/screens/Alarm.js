@@ -9,12 +9,13 @@ import {
   Modal,
   Alert,
   Pressable,
+  ImageBackground,
   // ActivityIndicator,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
-import drinkWave from '../../assets/images/drinkWave.png';
+import bg from '../../assets/images/bg.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
@@ -23,140 +24,157 @@ export default function Alarm({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [deleteAlarm, setDeleteAlarm] = useState(false);
   return (
-    <View style={styles.container}>
-      {/* <StatusBar style="auto" /> */}
-      <View style={styles.page0}>
-        <Text style={Styles.boldText}>Alarm</Text>
-      </View>
-      <View style={styles.page1}>
-        <Text style={{...Styles.boldText, fontSize: 12}}>Upcoming Alarm</Text>
-        <Text style={{...Styles.boldText, fontSize: 25, marginTop: 10}}>
-          19:45, Sat
-        </Text>
-      </View>
-      <View style={styles.page2}>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
-          <Text style={{...Styles.boldText, fontSize: 30, marginTop: 10}}>
-            Take a Pill
+    <ImageBackground source={bg} resizeMode="cover" style={styles.bg}>
+      <View style={styles.container}>
+        {/* <StatusBar style="auto" /> */}
+        <View style={styles.page0}>
+          <Text style={Styles.boldText}>Alarm</Text>
+        </View>
+        <View style={styles.page1}>
+          <Text style={{...Styles.boldText, fontSize: 12}}>Upcoming Alarm</Text>
+          <Text style={{...Styles.boldText, fontSize: 25, marginTop: 10}}>
+            19:45, Sat
           </Text>
         </View>
-        <Image
-          source={drinkWave}
-          resizeMode="cover"
-          style={styles.drinkWave}></Image>
-      </View>
-      <View style={styles.page3}>
-        {/* 추가 버튼 */}
-        <View style={styles.add}>
-          <TouchableOpacity
-            onPress={() => {
-              setModalVisible(true);
-            }}>
-            <Ionicons name="add" size={35} color={Colors.white}></Ionicons>
-          </TouchableOpacity>
+        <View style={styles.page2}>
+          <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={{...Styles.boldText, fontSize: 30, marginTop: 10}}>
+              Take a Pill
+            </Text>
+          </View>
+        </View>
+        <View style={styles.page3}>
+          {/* 추가 버튼 */}
+          <View style={styles.add}>
+            <TouchableOpacity
+              onPress={() => {
+                setModalVisible(true);
+              }}>
+              <Ionicons name="add" size={35} color={Colors.white}></Ionicons>
+            </TouchableOpacity>
 
-          {/* 알람 추가 모달 창 */}
+            {/* 알람 추가 모달 창 */}
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+                setModalVisible(!modalVisible);
+              }}>
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <Text style={styles.textStyle}>00:00</Text>
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={() => {
+                      setModalVisible(!modalVisible);
+                      Alert.alert('Alarm 생성');
+                    }}>
+                    <Text style={styles.textStyle}>Make Alarm</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </Modal>
+          </View>
+          {/* 알람 삭제 모달 창 */}
           <Modal
             animationType="slide"
             transparent={true}
-            visible={modalVisible}
+            visible={deleteAlarm}
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
-              setModalVisible(!modalVisible);
+              setDeleteAlarm(!deleteAlarm);
             }}>
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                <Text style={styles.textStyle}>00:00</Text>
+                <Text style={styles.textStyle}>알람을 삭제하시겠어요?</Text>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => {
-                    setModalVisible(!modalVisible);
-                    Alert.alert('Alarm 생성');
+                    setDeleteAlarm(!deleteAlarm);
+                    Alert.alert('알람 삭제 완료');
                   }}>
-                  <Text style={styles.textStyle}>Make Alarm</Text>
+                  <Text style={styles.textStyle}>알람 삭제</Text>
                 </Pressable>
               </View>
             </View>
           </Modal>
-        </View>
-        {/* 알람 삭제 모달 창 */}
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={deleteAlarm}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            setDeleteAlarm(!deleteAlarm);
-          }}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.textStyle}>알람을 삭제하시겠어요?</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => {
-                  setDeleteAlarm(!deleteAlarm);
-                  Alert.alert('알람 삭제 완료');
-                }}>
-                <Text style={styles.textStyle}>알람 삭제</Text>
-              </Pressable>
-            </View>
-          </View>
-        </Modal>
 
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.scroll}>
-          {/* 개별 알람 */}
-          <View style={styles.alarmBox}>
-            <View style={styles.alarmBox1}>
-              <Text style={styles.alarmText}>19:45pm</Text>
-              <Text style={{...styles.alarmText, fontSize: 15}}>
-                Take a Pill
-              </Text>
-            </View>
-            <View style={styles.alarmBox2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Ionicons name="alarm-outline" size={20} color={Colors.black} />
-                <Text style={styles.alarmText2}>Sat</Text>
+          <ScrollView
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.scroll}>
+            {/* 개별 알람 */}
+            <View style={styles.alarmBox}>
+              <View style={styles.alarmBox1}>
+                <Text style={styles.alarmText}>19:45pm</Text>
+                <Text style={{...styles.alarmText, fontSize: 15}}>
+                  Take a Pill
+                </Text>
               </View>
-              <TouchableOpacity
-                onPress={() => {
-                  setDeleteAlarm(!deleteAlarm);
-                }}>
-                <Ionicons name="trash-outline" size={20} color={Colors.black} />
-              </TouchableOpacity>
+              <View style={styles.alarmBox2}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Ionicons
+                    name="alarm-outline"
+                    size={20}
+                    color={Colors.black}
+                  />
+                  <Text style={styles.alarmText2}>Sat</Text>
+                </View>
+                <TouchableOpacity
+                  onPress={() => {
+                    setDeleteAlarm(!deleteAlarm);
+                  }}>
+                  <Ionicons
+                    name="trash-outline"
+                    size={20}
+                    color={Colors.black}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
+        <View style={styles.page4}></View>
       </View>
-      <View style={styles.page4}></View>
-    </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.bg,
+    // backgroundColor: Colors.bg,
     fontFamily: 'Lato-Bold',
+    marginTop: 15,
+  },
+  bg: {
+    position: 'relative',
+    bottom: 0,
+    right: 0,
+    flex: 1,
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+    // zIndex: 100,
   },
   page0: {
     flex: 0.4,
     flexDirection: 'row',
-    backgroundColor: Colors.bg,
+    // backgroundColor: Colors.bg,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 30,
   },
   page1: {
     flex: 0.3,
-    backgroundColor: Colors.bg,
+    // backgroundColor: Colors.bg,
     alignItems: 'center',
   },
   page2: {
     position: 'relative',
     flex: 0.8,
-    backgroundColor: Colors.bg,
+    // backgroundColor: Colors.bg,
   },
   drinkWave: {
     position: 'absolute',
@@ -170,7 +188,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   page4: {
-    backgroundColor: Colors.bg,
+    // backgroundColor: Colors.bg,
     height: 80,
   },
   scroll: {
@@ -210,7 +228,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '40%',
     bottom: 0,
-    // backgroundColor: '#E3DDF8',
+    backgroundColor: '#E3DDF8',
     backgroundColor: Colors.white,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,

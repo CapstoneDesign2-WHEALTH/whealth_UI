@@ -30,15 +30,11 @@ export default class App extends React.Component {
         },
         {
           title: 'Good',
-          text: '신장결석을 예방합니다.',
+          text: '신장 결석을 예방합니다.',
         },
         {
           title: 'Good',
           text: '부종을 해소하는데 도움을 줍니다.',
-        },
-        {
-          title: 'Good',
-          text: '신장결석을 예방합니다.',
         },
         {
           title: 'Good',
