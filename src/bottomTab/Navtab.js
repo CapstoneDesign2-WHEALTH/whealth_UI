@@ -34,6 +34,7 @@ const TabArr = [
   {
     route: 'Profile',
     label: 'Profile',
+    activeIcon: 'person',
     inActiveIcon: 'person-outline',
     component: Profile,
   },
