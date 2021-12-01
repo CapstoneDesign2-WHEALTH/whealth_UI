@@ -1,7 +1,3 @@
-import AppleHealthKit, {
-  HealthValue,
-  HealthKitPermissions,
-} from 'react-native-health';
 import React, {useEffect, useState, Animated} from 'react';
 import {
   StyleSheet,
@@ -16,127 +12,10 @@ import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import bg from '../../assets/images/bg.png';
+import waterMan from '../../assets/images/waterman.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ProfileCard from '../components/ProfileCard';
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
-/* Permission options */
-let options = {
-  permissions: {
-    read: [
-      AppleHealthKit.Constants.Permissions.HeartRate,
-      AppleHealthKit.Constants.Permissions.Steps,
-      AppleHealthKit.Constants.Permissions.StepCount,
-      AppleHealthKit.Constants.Permissions.ActiveEnergyBurned,
-      AppleHealthKit.Constants.Permissions.Height,
-      AppleHealthKit.Constants.Permissions.Weight,
-      AppleHealthKit.Constants.Permissions.SleepAnalysis,
-      AppleHealthKit.Constants.Permissions.BiologicalSex,
-      AppleHealthKit.Constants.Permissions.DateOfBirth,
-      AppleHealthKit.Constants.Permissions.Water,
-      AppleHealthKit.Constants.Permissions.HeartRate,
-    ],
-    write: [
-      AppleHealthKit.Constants.Permissions.Steps,
-      AppleHealthKit.Constants.Permissions.StepCount,
-      AppleHealthKit.Constants.Permissions.Weight,
-      AppleHealthKit.Constants.Permissions.Water,
-    ],
-  },
-};
-
-// Initializing HealthKit
-AppleHealthKit.initHealthKit(
-  (options: HealthInputOptions),
-  (err: string, results: boolean) => {
-    if (err) {
-      console.log('error initializing Healthkit: ', err);
-      return;
-    }
-    console.log('we got permissions!');
-    // Healthkit is initialized...
-    // now safe to read and write Healthkit data...
-  },
-);
-
-//Setting Weight Option.
-let WeightOption = {
-  unit: 'kilogram',
-};
-
-//Setting steop option
-let StepOption = {
-  date: new Date().toISOString(), // optional; default now
-  includeManuallyAdded: false, // optional: default true
-};
-
-// Variables for HK datas
-let Age, BirthDate;
-let Weight, Height;
-let Steps, Sex;
-
-//Method to get DateOfBirth
-AppleHealthKit.getDateOfBirth(
-  null,
-  (err: Object, results: HealthDateOfBirth) => {
-    if (err) {
-      return;
-    }
-
-    console.log(results);
-    //console.log('type of?')
-    //console.log(typeof results)
-    //console.log(typeof results.age)
-    //console.log(typeof results.value)
-
-    Age = results.age;
-    BirthDate = results.value.substring(0, 10);
-    //return results
-  },
-);
-
-//Method to get  Height
-AppleHealthKit.getLatestHeight(null, (err: string, results: HealthValue) => {
-  if (err) {
-    console.log('error getting latest height: ', err);
-    return;
-  }
-  console.log(results);
-  var InchHeight = parseInt(results.value);
-  var CentHeight = InchHeight * 2.54;
-  Height = CentHeight;
-});
-
-//Method to get Weight
-AppleHealthKit.getLatestWeight(
-  WeightOption,
-  (err: string, results: HealthValue) => {
-    if (err) {
-      console.log('error getting latest weight: ', err);
-      return;
-    }
-    Weight = results.value;
-  },
-);
-
-//Method to get sex
-AppleHealthKit.getBiologicalSex(null, (err: Object, results: Object) => {
-  if (err) {
-    return;
-  }
-  //console.log(results)
-  Sex = results.value;
-});
-
-// Method to get StepCount of today
-AppleHealthKit.getStepCount(
-  (StepOption: HealthInputOptions),
-  (err: Object, results: HealthValue) => {
-    if (err) {
-      return;
-    }
-    Steps = results.value;
-    //console.log(results)
-  },
-);
 
 export default function Profile({route, navigation}) {
   return (
@@ -149,32 +28,44 @@ export default function Profile({route, navigation}) {
           {/* <Text>성별, 생년월일, 키, 나이, 이름</Text> */}
           <View style={styles.profileCard}>
             <View style={styles.profileCard2}>
-              <Image
-                source={waterMan}
-                resizeMode="contain"
-                style={styles.waterMan}
-              />
+              <View style={styles.profileImage}>
+                <Image
+                  source={waterMan}
+                  resizeMode="contain"
+                  style={styles.waterMan}
+                />
+              </View>
+              <View style={styles.cardData}>
+                <Text
+                  style={{
+                    ...styles.profileCardText,
+                    fontSize: 17,
+                    color: Colors.white,
+                  }}>
+                  Your Name 님
+                </Text>
+              </View>
             </View>
             <View style={styles.profileCard3}>
               <View style={styles.cardData}>
-                <Text style={styles.profileCardText}>이름</Text>
-                <Text style={styles.profileCardText}>이름</Text>
-              </View>
-              <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>Gender</Text>
                 <Text style={styles.profileCardText}>성별</Text>
-                <Text style={styles.profileCardText}>{Sex}</Text>
               </View>
               <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>Birth</Text>
                 <Text style={styles.profileCardText}>생년월일</Text>
-                <Text style={styles.profileCardText}>{BirthDate}</Text>
               </View>
               <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>Age</Text>
                 <Text style={styles.profileCardText}>나이</Text>
-                <Text style={styles.profileCardText}>{Age}</Text>
               </View>
               <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>Height</Text>
                 <Text style={styles.profileCardText}>키</Text>
-                <Text style={styles.profileCardText}>{Height}</Text>
+              </View>
+              <View style={styles.cardData}>
+                <Text style={styles.profileCardText}>Weight</Text>
+                <Text style={styles.profileCardText}>몸무게</Text>
               </View>
             </View>
           </View>
@@ -184,28 +75,7 @@ export default function Profile({route, navigation}) {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.scroll}>
             {/* 데이터 */}
-            <View style={styles.alarmBox}>
-              <View style={styles.alarmBox1}>
-                <View style={{flexDirection: 'row'}}>
-                  <Ionicons name="flame" size={20} color="red" />
-                  <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
-                </View>
-              </View>
-              <View style={styles.alarmBox2}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'flex-end',
-                    justifyContent: 'center',
-                  }}>
-                  <Text style={styles.alarmText2}>4.6 </Text>
-                  <Text
-                    style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
-                    km
-                  </Text>
-                </View>
-              </View>
-            </View>
+            <ProfileCard></ProfileCard>
           </ScrollView>
         </View>
         <View style={styles.page4}></View>
@@ -306,26 +176,41 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     height: '95%',
-    // backgroundColor: Colors.bg,
     marginBottom: 20,
-    borderWidth: 2,
-    borderColor: Colors.black,
-    // backgroundColor: Colors.black,
+    // paddingHorizontal: 5,
   },
   profileCard2: {
     width: '50%',
+    height: '100%',
     position: 'relative',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingVertical: 20,
+    justifyContent: 'space-evenly',
+    backgroundColor: Colors.black,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: Colors.white,
+  },
+  profileImage: {
+    width: 120,
+    height: 120,
+    borderWidth: 3,
+    borderRadius: 100,
+    borderColor: Colors.white,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    backgroundColor: Colors.black,
   },
   profileCard3: {
-    // backgroundColor: Colors.pink,
+    backgroundColor: Colors.white,
     width: '50%',
     height: '100%',
     borderRadius: 20,
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.black,
   },
   cardData: {
     flexDirection: 'row',
@@ -336,7 +221,7 @@ const styles = StyleSheet.create({
   profileCardText: {
     ...Styles.boldText,
     paddingVertical: 10,
-    // color: Colors.white,
+    color: Colors.black,
     fontSize: 16,
   },
   waterMan: {
