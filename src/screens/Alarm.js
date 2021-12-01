@@ -10,19 +10,58 @@ import {
   Alert,
   Pressable,
   ImageBackground,
+  Button,
   // ActivityIndicator,
 } from 'react-native';
-import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import bg from '../../assets/images/bg.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
 export default function Alarm({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [deleteAlarm, setDeleteAlarm] = useState(false);
+
+  // DateTimePicker
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+
+  const [aDay, setADay] = useState('');
+  const [aMonth, setAMonth] = useState('');
+  const [aDate, setADate] = useState('');
+  const [aTime, setATime] = useState('');
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+
+  const showMode = currentMode => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
+  const convertDate = () => {
+    const chosenDate = new Date(date).toString().split(' ');
+    setAMonth(chosenDate[1]);
+    setADate(chosenDate[2]);
+    setADay(chosenDate[0]);
+    setATime(chosenDate[4]);
+    console.log(`요일:${aDay}`);
+  };
+
   return (
     <ImageBackground source={bg} resizeMode="cover" style={styles.bg}>
       <View style={styles.container}>
@@ -64,14 +103,34 @@ export default function Alarm({route, navigation}) {
               }}>
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                  <Text style={styles.textStyle}>00:00</Text>
+                  {/* Date Time Picker */}
+
+                  <View style={styles.modalQuestion}>
+                    <View>
+                      <Button onPress={showDatepicker} title="날짜 선택" />
+                    </View>
+                    <View>
+                      <Button onPress={showTimepicker} title="알람 시간 선택" />
+                    </View>
+                    {show && (
+                      <DateTimePicker
+                        testID="dateTimePicker"
+                        value={date}
+                        mode={mode}
+                        is24Hour={true}
+                        display="default"
+                        onChange={onChange}
+                      />
+                    )}
+                  </View>
                   <Pressable
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => {
+                      convertDate();
                       setModalVisible(!modalVisible);
                       Alert.alert('Alarm 생성');
                     }}>
-                    <Text style={styles.textStyle}>Make Alarm</Text>
+                    <Text style={{...styles.textStyle, fontSize: 20}}>Add</Text>
                   </Pressable>
                 </View>
               </View>
@@ -88,14 +147,16 @@ export default function Alarm({route, navigation}) {
             }}>
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                <Text style={styles.textStyle}>알람을 삭제하시겠어요?</Text>
+                <View style={styles.modalQuestion}>
+                  <Text style={styles.textStyle}>Delete?</Text>
+                </View>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => {
                     setDeleteAlarm(!deleteAlarm);
                     Alert.alert('알람 삭제 완료');
                   }}>
-                  <Text style={styles.textStyle}>알람 삭제</Text>
+                  <Text style={{...styles.textStyle, fontSize: 20}}>Yes</Text>
                 </Pressable>
               </View>
             </View>
@@ -266,6 +327,7 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
+    position: 'relative',
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
@@ -282,7 +344,20 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  button: {
+    position: 'absolute',
+    bottom: 20,
+    right: 30,
+  },
+  buttonClose: {},
   textStyle: {
     ...Styles.boldText,
+  },
+  modalQuestion: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
