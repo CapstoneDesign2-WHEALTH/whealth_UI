@@ -356,7 +356,6 @@ const styles = StyleSheet.create({
   modalQuestion: {
     position: 'absolute',
     top: '50%',
-    left: '50%',
     // alignItems: 'center',
     // justifyContent: 'center',
   },
