@@ -13,7 +13,6 @@ import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import bg from '../../assets/images/bg.png';
 import waterMan from '../../assets/images/waterman.png';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import ProfileCard from '../components/ProfileCard';
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
 
@@ -179,7 +178,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     height: '95%',
     marginBottom: 20,
-    // paddingHorizontal: 5,
   },
   profileCard2: {
     width: '60%',

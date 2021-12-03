@@ -7,7 +7,6 @@ import {
   Image,
   ImageBackground,
 } from 'react-native';
-// import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import bg from '../../assets/images/bg.png';

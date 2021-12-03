@@ -12,7 +12,7 @@ export default function Screen({route, navigation}) {
         back
         onPressBack={() => navigation.goBack()}
         title={route.name}
-        // right="more-vertical"
+        right="more-vertical"
         onRightPress={() => console.log('right')}
       />
       <Button onPress={() => {}}>Open Something</Button>

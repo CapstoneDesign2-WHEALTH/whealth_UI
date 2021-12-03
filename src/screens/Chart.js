@@ -7,7 +7,6 @@ import {
   ScrollView,
   ImageBackground,
 } from 'react-native';
-import * as Animatable from 'react-native-animatable';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
 import Donut from '../components/Donut';

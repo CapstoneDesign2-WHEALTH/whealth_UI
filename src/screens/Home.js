@@ -1,12 +1,9 @@
 import React from 'react';
-import {List} from 'react-native-paper';
 import {StyleSheet, View, Text, StatusBar, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Colors from '../constants/Colors';
 import Styles from '../common/Styles';
 import Yoga from '../../assets/images/Yoga.png';
-import waterman from '../../assets/images/waterman.png';
-import loginBg from '../../assets/images/loginBg.png';
 import facebook from '../../assets/images/facebook.png';
 import google from '../../assets/images/google.png';
 const Home = ({navigation}) => {

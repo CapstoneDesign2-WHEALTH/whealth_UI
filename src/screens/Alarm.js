@@ -11,7 +11,6 @@ import {
   Pressable,
   ImageBackground,
   Button,
-  // ActivityIndicator,
 } from 'react-native';
 import Styles from '../common/Styles';
 import Colors from '../constants/Colors';
