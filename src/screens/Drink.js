@@ -14,12 +14,17 @@ import Donut from '../components/Donut';
 import Curve from '../components/Curve';
 import Info from '../components/Info';
 import Info2 from '../components/Info2';
+import Measure from '../components/Measure';
+
 export default function Drink({route, navigation}) {
   let today = new Date();
   const [hour, setHour] = useState(today.getHours());
   const [minute, setMinute] = useState(today.getMinutes());
   const [day, setDay] = useState(today.getDate());
   const [month, setMonth] = useState(today.getMonth());
+  useEffect(() => {
+    <Measure></Measure>;
+  }, []);
   return (
     <ImageBackground source={bg} resizeMode="cover" style={styles.bg}>
       <View style={styles.container}>
