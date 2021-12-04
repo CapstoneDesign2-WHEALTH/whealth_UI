@@ -146,7 +146,7 @@ export default class Measure extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.state.info}</Text>
+        <Text>{this.state.response}</Text>
       </View>
     );
   }
