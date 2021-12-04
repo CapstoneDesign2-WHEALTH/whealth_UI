@@ -18,8 +18,11 @@ import bg from '../../assets/images/bg.png';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {AppState, PushNotificationIOS} from 'react-native';
+import PushNotification from 'react-native-push-notification';
 
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
+
 export default function Alarm({route, navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const [deleteAlarm, setDeleteAlarm] = useState(false);
@@ -58,9 +61,55 @@ export default function Alarm({route, navigation}) {
     setADate(chosenDate[2]);
     setADay(chosenDate[0]);
     setATime(chosenDate[4]);
-    console.log(`요일:${aDay}`);
   };
 
+  // PushALarm
+  const _handleAppStateChange = nextAppState => {
+    if (nextAppState === 'active') {
+      _registerLocalNotification();
+    }
+  };
+
+  const _registerLocalNotification = () => {
+    PushNotification.setApplicationIconBadgeNumber(0);
+    PushNotification.cancelAllLocalNotifications();
+    PushNotification.localNotificationSchedule({
+      /* Android Only Properties */
+      vibrate: true,
+      vibration: 300,
+      priority: 'hight',
+      visibility: 'public',
+      importance: 'hight',
+
+      /* iOS and Android properties */
+      message: 'www', // (required)
+      playSound: true,
+      number: 1,
+      actions: '["OK"]',
+
+      date: date,
+    });
+  };
+
+  const register = async () => {
+    PushNotification.configure({
+      onNotification: function (notification) {
+        notification.finish(PushNotificationIOS.FetchResult.NoData);
+      },
+      popInitialNotification: true,
+    });
+    _registerLocalNotification();
+    AppState.addEventListener('change', _handleAppStateChange);
+  };
+
+  const unregister = () => {
+    AppState.removeEventListener('change', _handleAppStateChange);
+  };
+
+  useEffect(() => { 
+    // PushAlarm.unregister();
+    register();
+  }, [aTime]);
   return (
     <ImageBackground source={bg} resizeMode="cover" style={styles.bg}>
       <View style={styles.container}>
