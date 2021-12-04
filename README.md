@@ -47,8 +47,10 @@
 - Donut Chart 도입 (2021-11-14)
 ### 5. Alarm Component 디자인
 - Alarm 목록 UI 제작 (2021-11-14)
+- Push notification 알람 기능 동작 확인 (2021-12-04)
 ### 6. Profile Component 디자인
 - HealthKit 데이터 출력 방식 설정 (2021-11-14)
+- Profile Card 제작 (2021-12-01)
 ### 7. 로그인 Component 디자인
 - UI 자체 디자인 완료 (기능 구현 필요) (2021-11-14)
 - 로그인 페이지로 로딩되는 파트 수정 필요
