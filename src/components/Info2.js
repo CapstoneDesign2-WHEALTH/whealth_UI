@@ -36,20 +36,23 @@ export default class App extends React.Component {
           style={{
             ...styles.bar,
             backgroundColor: '#B933F9',
-          }}></View>
+          }}
+        ></View>
         <View
           style={{
             ...styles.bar,
             backgroundColor: '#F3D9FF',
             left: 40,
             zIndex: -1,
-          }}></View>
+          }}
+        ></View>
         <Text
           style={{
             ...Styles.Text,
             fontSize: 13,
             marginTop: 50,
-          }}>
+          }}
+        >
           {item.text}
         </Text>
       </View>

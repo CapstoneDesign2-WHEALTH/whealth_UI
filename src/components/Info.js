@@ -60,14 +60,16 @@ export default class App extends React.Component {
           style={{
             ...styles.bar,
             backgroundColor: Colors.darkBlue,
-          }}></View>
+          }}
+        ></View>
         <View
           style={{
             ...styles.bar,
             backgroundColor: Colors.lightBlue,
             left: 40,
             zIndex: -1,
-          }}></View>
+          }}
+        ></View>
         <Text style={{...Styles.Text, fontSize: 13, marginTop: 50}}>
           {item.text}
         </Text>

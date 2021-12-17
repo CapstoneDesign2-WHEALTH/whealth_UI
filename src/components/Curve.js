@@ -53,7 +53,8 @@ class GradientLineExample extends React.PureComponent {
         svg={{
           strokeWidth: 3,
           stroke: 'url(#gradient)',
-        }}>
+        }}
+      >
         {/* <Grid /> */}
         <HorizontalLine />
         <Gradient />

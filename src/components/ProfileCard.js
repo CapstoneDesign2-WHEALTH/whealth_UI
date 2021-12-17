@@ -5,13 +5,13 @@ import Colors from '../constants/Colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 const {width: SCREEN_WIDTH, height: SCREEN_height} = Dimensions.get('window');
 
-export default function ProfileCard() {
+export default function ProfileCard(props) {
   return (
     <View style={styles.alarmBox}>
       <View style={styles.alarmBox1}>
         <View style={{flexDirection: 'row'}}>
           <Ionicons name="flame" size={20} color="red" />
-          <Text style={styles.alarmText}> 걷기 달리기 거리</Text>
+          <Text style={styles.alarmText}> {props.id}</Text>
         </View>
       </View>
       <View style={styles.alarmBox2}>
@@ -20,10 +20,11 @@ export default function ProfileCard() {
             flexDirection: 'row',
             alignItems: 'flex-end',
             justifyContent: 'center',
-          }}>
-          <Text style={styles.alarmText2}>4.6 </Text>
+          }}
+        >
+          <Text style={styles.alarmText2}> {props.content} </Text>
           <Text style={{...styles.alarmText2, fontSize: 14, marginLeft: 0}}>
-            km
+            {props.unit}
           </Text>
         </View>
       </View>

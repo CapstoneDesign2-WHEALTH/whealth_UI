@@ -63,7 +63,8 @@ export default function Chart({route, navigation}) {
         <View style={styles.page4}>
           <View style={{marginTop: '15%'}}>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+              style={{flexDirection: 'row', justifyContent: 'space-around'}}
+            >
               <Text style={styles.day}>Mon</Text>
               <Text style={styles.day}>Tue</Text>
               <Text style={styles.day}>Wed</Text>

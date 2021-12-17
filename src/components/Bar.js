@@ -16,14 +16,16 @@ function DrawBar(props) {
             bottom: 30,
             width: 2,
             zIndex: -1,
-          }}></View>
+          }}
+        ></View>
         <View
           style={{
             ...styles.bar,
             height: props.drink / 20,
             backgroundColor: props.color,
             bottom: props.height,
-          }}></View>
+          }}
+        ></View>
       </View>
     </View>
   );
@@ -46,7 +48,8 @@ export default function Bar() {
             <DrawBar
               drink={el.drink}
               idx={idx}
-              color={Colors.primary}></DrawBar>
+              color={Colors.primary}
+            ></DrawBar>
           </View>
         );
       })}

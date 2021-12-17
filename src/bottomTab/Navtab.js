@@ -57,7 +57,8 @@ export default function AnimTab1() {
           borderTopEndRadius: 40,
           backgroundColor: Colors.darkBlue,
         },
-      })}>
+      })}
+    >
       {TabArr.map((item, index) => {
         return (
           <Tab.Screen

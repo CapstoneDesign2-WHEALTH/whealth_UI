@@ -82,7 +82,7 @@ export default function Alarm({route, navigation}) {
       importance: 'hight',
 
       /* iOS and Android properties */
-      message: 'www', // (required)
+      message: '물 드실 시간이예요!', // (required)
       playSound: true,
       number: 1,
       actions: '["OK"]',
@@ -106,7 +106,7 @@ export default function Alarm({route, navigation}) {
     AppState.removeEventListener('change', _handleAppStateChange);
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     // PushAlarm.unregister();
     register();
   }, [aTime]);
@@ -136,7 +136,8 @@ export default function Alarm({route, navigation}) {
             <TouchableOpacity
               onPress={() => {
                 setModalVisible(true);
-              }}>
+              }}
+            >
               <Ionicons name="add" size={35} color={Colors.white}></Ionicons>
             </TouchableOpacity>
 
@@ -148,7 +149,8 @@ export default function Alarm({route, navigation}) {
               onRequestClose={() => {
                 Alert.alert('Modal has been closed.');
                 setModalVisible(!modalVisible);
-              }}>
+              }}
+            >
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                   {/* Date Time Picker */}
@@ -177,7 +179,8 @@ export default function Alarm({route, navigation}) {
                       convertDate();
                       setModalVisible(!modalVisible);
                       Alert.alert('Alarm 생성');
-                    }}>
+                    }}
+                  >
                     <Text style={{...styles.textStyle, fontSize: 20}}>Add</Text>
                   </Pressable>
                 </View>
@@ -192,7 +195,8 @@ export default function Alarm({route, navigation}) {
             onRequestClose={() => {
               Alert.alert('Modal has been closed.');
               setDeleteAlarm(!deleteAlarm);
-            }}>
+            }}
+          >
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
                 <View style={styles.modalQuestion}>
@@ -203,7 +207,8 @@ export default function Alarm({route, navigation}) {
                   onPress={() => {
                     setDeleteAlarm(!deleteAlarm);
                     Alert.alert('알람 삭제 완료');
-                  }}>
+                  }}
+                >
                   <Text style={{...styles.textStyle, fontSize: 20}}>Yes</Text>
                 </Pressable>
               </View>
@@ -212,7 +217,8 @@ export default function Alarm({route, navigation}) {
 
           <ScrollView
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.scroll}>
+            contentContainerStyle={styles.scroll}
+          >
             {/* 개별 알람 */}
             <View style={styles.alarmBox}>
               <View style={styles.alarmBox1}>
@@ -233,7 +239,8 @@ export default function Alarm({route, navigation}) {
                 <TouchableOpacity
                   onPress={() => {
                     setDeleteAlarm(!deleteAlarm);
-                  }}>
+                  }}
+                >
                   <Ionicons
                     name="trash-outline"
                     size={20}

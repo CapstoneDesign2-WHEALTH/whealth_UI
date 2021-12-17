@@ -100,23 +100,6 @@ export default class Measure extends Component {
       }
     });
   }
-  async readData(device) {
-    const services = await device.services();
-    console.log('Services:', services);
-    const characteristics = await services[1].characteristics();
-    console.log('Characteristics:', characteristics);
-    characteristics[0].monitor((err, update) => {
-      if (err) {
-        console.log(`characteristic error: ${err}`);
-        console.log(JSON.stringify(err));
-      } else {
-        console.log('Is Characteristics Readable:', update.isReadable);
-
-        const heartRateData = update.value;
-        console.log(heartRateData);
-      }
-    });
-  }
 
   async setupNotifications(device) {
     console.log('1111111111');
@@ -146,7 +129,9 @@ export default class Measure extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.state.response}</Text>
+        <Text style={{fontSize: 80, zIndex: 100, marginTop: 500}}>
+          {this.state.response}
+        </Text>
       </View>
     );
   }
